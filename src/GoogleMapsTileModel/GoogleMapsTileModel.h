@@ -50,11 +50,7 @@ class GoogleMapsTileModel: public Core::AbstractMercatorTileModel {
 
 }}
 
-#ifndef DOXYGEN_GENERATING_OUTPUT
 PLUGIN_REGISTER(Map2X::Plugins::GoogleMapsTileModel,
-                "cz.mosra.Map2X.Core.AbstractTileModel/0.1");
-PLUGIN_SET_NAME("Google Maps");
-PLUGIN_FINISH
-#endif
+                "cz.mosra.Map2X.Core.AbstractTileModel/0.1")
 
 #endif
