@@ -19,18 +19,21 @@
  * @brief Class Map2X::Plugins::GoogleMapsTileModel
  */
 
-#include "AbstractMercatorTileModel.h"
+#include "AbstractTileModel.h"
+#include "Plugins/MercatorProjection/MercatorProjection.h"
 
 namespace Map2X { namespace Plugins {
 
 /** @brief Tile model for Google Maps */
-class GoogleMapsTileModel: public Core::AbstractMercatorTileModel {
+class GoogleMapsTileModel: public Core::AbstractTileModel {
     public:
         GoogleMapsTileModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName):
-            AbstractMercatorTileModel(manager, pluginName) {}
+            AbstractTileModel(manager, pluginName) {}
 
         inline virtual int features() const
-            { return Core::AbstractMercatorTileModel::features()|LoadableFromUrl; }
+            { return LoadableFromUrl; }
+        virtual const Map2X::Core::AbstractProjection* projection() const
+            { return &_projection; }
         inline virtual Core::TileSize tileSize() const
             { return Core::TileSize(256,256); }
         virtual std::string copyright() const
@@ -46,6 +49,9 @@ class GoogleMapsTileModel: public Core::AbstractMercatorTileModel {
          * http://www.codeproject.com/KB/scrapbook/googlemap.aspx
          */
         virtual std::string tileUrl(const std::string& layer, Core::Zoom z, const Map2X::Core::TileCoords& coords) const;
+
+    private:
+        Plugins::MercatorProjection _projection;
 };
 
 }}

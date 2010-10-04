@@ -1,1 +1,1 @@
-map2x_add_plugin(GoogleMaps ${CMAKE_CURRENT_BINARY_DIR} GoogleMapsTileModel.conf GoogleMapsTileModel.cpp)
+map2x_add_plugin(GoogleMapsTileModel ${MAP2X_PLUGINS_TILEMODEL_INSTALL_DIR} GoogleMapsTileModel.conf GoogleMapsTileModel.cpp)
