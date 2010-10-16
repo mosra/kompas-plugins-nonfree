@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.6)
 
-project(Map2XPlugins)
+project(Map2XPluginsNonfree)
 
 add_subdirectory(src)
 
