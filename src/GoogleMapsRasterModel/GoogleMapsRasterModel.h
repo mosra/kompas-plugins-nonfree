@@ -19,19 +19,20 @@
  * @brief Class Map2X::Plugins::GoogleMapsRasterModel
  */
 
-#include "AbstractRasterModel.h"
+#include "Map2XRasterModel/Map2XRasterModel.h"
 #include "MercatorProjection/MercatorProjection.h"
 
 namespace Map2X { namespace Plugins {
 
 /** @brief Raster model for Google Maps */
-class GoogleMapsRasterModel: public Core::AbstractRasterModel {
+class GoogleMapsRasterModel: public Map2XRasterModel {
     public:
         GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName):
-            AbstractRasterModel(manager, pluginName) {}
+            Map2XRasterModel(manager, pluginName) {}
 
-        inline virtual int features() const
-            { return LoadableFromUrl; }
+        inline virtual int features() const {
+            return Map2XRasterModel::features()|LoadableFromUrl|NonConvertableFormat;
+        }
         virtual const Map2X::Core::AbstractProjection* projection() const
             { return &_projection; }
         inline virtual Core::TileSize tileSize() const
