@@ -13,38 +13,38 @@
     GNU Lesser General Public License version 3 for more details.
 */
 
-#include "GoogleMapsTileModel.h"
+#include "GoogleMapsRasterModel.h"
 
 using namespace Map2X::Core;
 using namespace std;
 
 namespace Map2X { namespace Plugins {
 
-vector<Zoom> GoogleMapsTileModel::zoomLevels() const {
+vector<Zoom> GoogleMapsRasterModel::zoomLevels() const {
     vector<Zoom> z;
     for(Zoom i = 0; i != 23; ++i)
         z.push_back(i);
     return z;
 }
 
-TileArea GoogleMapsTileModel::area() const {
+TileArea GoogleMapsRasterModel::area() const {
     return TileArea(0, 0, 1, 1);
 }
 
-vector<string> GoogleMapsTileModel::layers() const {
+vector<string> GoogleMapsRasterModel::layers() const {
     vector<string> l;
     l.push_back("Map");
     l.push_back("Satellite");
     return l;
 }
 
-vector<string> GoogleMapsTileModel::overlays() const {
+vector<string> GoogleMapsRasterModel::overlays() const {
     vector<string> l;
     l.push_back("Labels");
     return l;
 }
 
-string GoogleMapsTileModel::tileUrl(const std::string& layer, Zoom z, const Map2X::Core::TileCoords& coords) const {
+string GoogleMapsRasterModel::tileUrl(const std::string& layer, Zoom z, const Map2X::Core::TileCoords& coords) const {
     /* "Random" server number */
     int servernum = (coords.x + 2*coords.y)%4;
 

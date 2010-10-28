@@ -7,4 +7,4 @@ if(QT_PLUGINS)
     find_package(Qt4 REQUIRED)
 endif()
 
-add_subdirectory(GoogleMapsTileModel)
+add_subdirectory(GoogleMapsRasterModel)

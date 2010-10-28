@@ -1,5 +1,5 @@
-#ifndef Map2X_Plugins_GoogleMapsTileModel_h
-#define Map2X_Plugins_GoogleMapsTileModel_h
+#ifndef Map2X_Plugins_GoogleMapsRasterModel_h
+#define Map2X_Plugins_GoogleMapsRasterModel_h
 /*
     Copyright © 2007, 2008, 2009, 2010 Vladimír Vondruš <mosra@centrum.cz>
 
@@ -16,19 +16,19 @@
 */
 
 /** @file
- * @brief Class Map2X::Plugins::GoogleMapsTileModel
+ * @brief Class Map2X::Plugins::GoogleMapsRasterModel
  */
 
-#include "AbstractTileModel.h"
+#include "AbstractRasterModel.h"
 #include "MercatorProjection/MercatorProjection.h"
 
 namespace Map2X { namespace Plugins {
 
-/** @brief Tile model for Google Maps */
-class GoogleMapsTileModel: public Core::AbstractTileModel {
+/** @brief Raster model for Google Maps */
+class GoogleMapsRasterModel: public Core::AbstractRasterModel {
     public:
-        GoogleMapsTileModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName):
-            AbstractTileModel(manager, pluginName) {}
+        GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName):
+            AbstractRasterModel(manager, pluginName) {}
 
         inline virtual int features() const
             { return LoadableFromUrl; }
@@ -56,7 +56,7 @@ class GoogleMapsTileModel: public Core::AbstractTileModel {
 
 }}
 
-PLUGIN_REGISTER(Map2X::Plugins::GoogleMapsTileModel,
-                "cz.mosra.Map2X.Core.AbstractTileModel/0.1")
+PLUGIN_REGISTER(Map2X::Plugins::GoogleMapsRasterModel,
+                "cz.mosra.Map2X.Core.AbstractRasterModel/0.1")
 
 #endif
