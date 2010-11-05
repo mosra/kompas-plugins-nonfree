@@ -24,9 +24,10 @@
 
 namespace Map2X { namespace Plugins {
 
-/** @brief Raster model for Google Maps */
+/** @brief Google Maps */
 class GoogleMapsRasterModel: public Map2XRasterModel {
     public:
+        /** @copydoc Plugins::Map2XRasterModel::Map2XRasterModel */
         GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName):
             Map2XRasterModel(manager, pluginName) {}
 
