@@ -10,6 +10,7 @@ if(QT_PLUGINS)
 endif()
 
 add_subdirectory(GoogleMapsRasterModel)
+add_subdirectory(MapyCzRasterModel)
 
 if(BUILD_TESTS)
     enable_testing()
