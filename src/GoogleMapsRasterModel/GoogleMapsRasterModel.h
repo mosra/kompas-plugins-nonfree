@@ -34,11 +34,11 @@ class GoogleMapsRasterModel: public Map2XRasterModel {
         inline virtual int features() const {
             return Map2XRasterModel::features()|LoadableFromUrl|NonConvertableFormat;
         }
-        virtual const Map2X::Core::AbstractProjection* projection() const
+        inline virtual const Map2X::Core::AbstractProjection* projection() const
             { return &_projection; }
         inline virtual Core::TileSize tileSize() const
             { return Core::TileSize(256,256); }
-        virtual std::string copyright() const
+        inline virtual std::string copyright() const
             { return "© 2010 Google, Map Data © 2010 Tele Atlas."; }
 
         virtual std::vector<Core::Zoom> zoomLevels() const;
