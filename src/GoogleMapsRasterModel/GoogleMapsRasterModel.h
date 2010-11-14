@@ -38,6 +38,8 @@ class GoogleMapsRasterModel: public Map2XRasterModel {
             { return &_projection; }
         inline virtual Core::TileSize tileSize() const
             { return Core::TileSize(256,256); }
+        inline virtual double zoomStep() const
+            { return 2; }
         inline virtual std::string copyright() const
             { return "© 2010 Google, Map Data © 2010 Tele Atlas."; }
 
