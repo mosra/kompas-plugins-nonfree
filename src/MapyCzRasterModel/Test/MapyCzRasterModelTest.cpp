@@ -31,7 +31,7 @@ namespace Map2X { namespace Plugins { namespace Test {
 void MapyCzRasterModelTest::version2() {
     QVERIFY(model.addPackage(Directory::join(MAPYCZRASTERMODEL_TEST_DIR, "map.conf")) == 0);
     QVERIFY(model.area() == TileArea(255, 257, 4, 4));
-    QVERIFY(model.attribute(AbstractRasterModel::Name, 0) == "České Budějovice a okolí");
+    QVERIFY(model.packageAttribute(0, AbstractRasterModel::Name) == "České Budějovice a okolí");
 
     vector<Zoom> zoomLevels;
     zoomLevels.push_back(9);

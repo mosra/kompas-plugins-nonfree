@@ -31,7 +31,7 @@ namespace Map2X { namespace Plugins { namespace Test {
 void GoogleMapsRasterModelTest::version2() {
     QVERIFY(model.addPackage(Directory::join(GOOGLEMAPSRASTERMODEL_TEST_DIR, "map.conf")) == 0);
     QVERIFY(model.area() == TileArea(62, 41, 3, 2));
-    QVERIFY(model.attribute(AbstractRasterModel::Name, 0) == "Jih Anglie");
+    QVERIFY(model.packageAttribute(0, AbstractRasterModel::Name) == "Jih Anglie");
 
     vector<Zoom> zoomLevels;
     zoomLevels.push_back(7);
