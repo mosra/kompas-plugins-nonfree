@@ -35,8 +35,6 @@ class MapyCzRasterModel: public Map2XRasterModel {
         virtual SupportLevel recognizeFile(const std::string& filename, std::istream& file) const;
         inline virtual Core::TileSize tileSize() const
             { return Core::TileSize(256,256); }
-        inline virtual double zoomStep() const
-            { return 2; }
         inline virtual std::string copyright() const
             { return "© PLANstudio, 2005-2010, © SHOCart, s.r.o., © Seznam.cz"; }
 

@@ -16,7 +16,6 @@
 #include "MapyCzRasterModel.h"
 
 #include <cstdlib>
-#include <cmath>
 #include <algorithm>
 
 #include "Utility/Directory.h"
@@ -107,8 +106,8 @@ string MapyCzRasterModel::tileUrl(const std::string& layer, Zoom z, const TileCo
         url << "tcyklo";
     else return "";
 
-    unsigned int multiplier = pow(2, 28-z);
-    unsigned int yReverse = pow(2,z)-coords.y-1;
+    unsigned int multiplier = pow2(28-z);
+    unsigned int yReverse = pow2(z)-coords.y-1;
 
     url << "/" << z << "_" << std::hex << multiplier*coords.x << "_" << multiplier*yReverse;
 
@@ -138,7 +137,7 @@ Map2XRasterModel::Package* MapyCzRasterModel::parsePackage(const Configuration* 
     sort(p->zoomLevels.begin(), p->zoomLevels.end());
 
     /* Divisor for area size */
-    unsigned int divisor = pow(2, 16-p->zoomLevels[0]);
+    unsigned int divisor = pow2(16-p->zoomLevels[0]);
 
     /* Area size (hex) */
     p->area.x = conf->value<unsigned int>("begin_x", 0, Configuration::Hex)/divisor;
