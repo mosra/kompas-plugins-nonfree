@@ -31,7 +31,7 @@ class GoogleMapsRasterModel: public Map2XRasterModel {
         GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName);
 
         inline virtual int features() const {
-            return Map2XRasterModel::features()|LoadableFromUrl|NonConvertableFormat;
+            return Map2XRasterModel::features()|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;
         }
         virtual SupportLevel recognizeFile(const std::string& filename, std::istream& file) const;
         inline virtual const Map2X::Core::AbstractProjection* projection() const
