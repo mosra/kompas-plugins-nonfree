@@ -1,13 +1,13 @@
 /*
     Copyright © 2007, 2008, 2009, 2010 Vladimír Vondruš <mosra@centrum.cz>
 
-    This file is part of Map2X.
+    This file is part of Kompas.
 
-    Map2X is free software: you can redistribute it and/or modify
+    Kompas is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License version 3
     only, as published by the Free Software Foundation.
 
-    Map2X is distributed in the hope that it will be useful,
+    Kompas is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU Lesser General Public License version 3 for more details.
@@ -21,8 +21,8 @@
 #include "Utility/Directory.h"
 
 using namespace std;
-using namespace Map2X::Utility;
-using namespace Map2X::Core;
+using namespace Kompas::Utility;
+using namespace Kompas::Core;
 
 /** @todo Do it differently (nick + translated names) */
 #define __zakladni      "Základní"
@@ -35,12 +35,12 @@ using namespace Map2X::Core;
 #define __trasy         "Turistické trasy"
 #define __cyklo         "Cyklostezky"
 
-PLUGIN_REGISTER(Map2X::Plugins::MapyCzRasterModel,
-                "cz.mosra.Map2X.Core.AbstractRasterModel/0.1")
+PLUGIN_REGISTER(Kompas::Plugins::MapyCzRasterModel,
+                "cz.mosra.Kompas.Core.AbstractRasterModel/0.1")
 
-namespace Map2X { namespace Plugins {
+namespace Kompas { namespace Plugins {
 
-MapyCzRasterModel::MapyCzRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): Map2XRasterModel(manager, pluginName), areaOnline(1, 1, 6, 6) {
+MapyCzRasterModel::MapyCzRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(1, 1, 6, 6) {
     /* All zoom levels for online maps */
     for(Zoom i = 3; i != 19; ++i)
         zoomLevelsOnline.push_back(i);
@@ -60,7 +60,7 @@ MapyCzRasterModel::MapyCzRasterModel(PluginManager::AbstractPluginManager* manag
 }
 
 AbstractRasterModel::SupportLevel MapyCzRasterModel::recognizeFile(const std::string& filename, istream& file) const {
-    SupportLevel parent = Map2XRasterModel::recognizeFile(filename, file);
+    SupportLevel parent = KompasRasterModel::recognizeFile(filename, file);
     if(parent != NotSupported) return parent;
 
     file.clear();
@@ -114,8 +114,8 @@ string MapyCzRasterModel::tileUrl(const std::string& layer, Zoom z, const TileCo
     return url.str();
 }
 
-Map2XRasterModel::Package* MapyCzRasterModel::parsePackage(const Configuration* conf) {
-    Package* p = Map2XRasterModel::parsePackage(conf);
+KompasRasterModel::Package* MapyCzRasterModel::parsePackage(const Configuration* conf) {
+    Package* p = KompasRasterModel::parsePackage(conf);
     if(p) return p; /* Version 3 package */
 
     /* Not version 3 package, backward compatibility with version 2 */
@@ -163,12 +163,12 @@ Map2XRasterModel::Package* MapyCzRasterModel::parsePackage(const Configuration* 
     return p;
 }
 
-string MapyCzRasterModel::tileFromArchive(const std::string& path, const std::string& layer, Zoom z, std::vector< Map2XRasterArchiveReader* >* archives, unsigned int archiveId, int packageVersion, unsigned int tileId) {
+string MapyCzRasterModel::tileFromArchive(const std::string& path, const std::string& layer, Zoom z, std::vector< KompasRasterArchiveReader* >* archives, unsigned int archiveId, int packageVersion, unsigned int tileId) {
     /* Convert layer name from version 3 to version 2 if package is in version 2 */
     if(packageVersion == 2)
-        return Map2X::Plugins::Map2XRasterModel::tileFromArchive(path, name3to2(layer), z, archives, archiveId, 3, tileId);
+        return Kompas::Plugins::KompasRasterModel::tileFromArchive(path, name3to2(layer), z, archives, archiveId, 3, tileId);
     else
-        return Map2X::Plugins::Map2XRasterModel::tileFromArchive(path, layer, z, archives, archiveId, packageVersion, tileId);
+        return Kompas::Plugins::KompasRasterModel::tileFromArchive(path, layer, z, archives, archiveId, packageVersion, tileId);
 }
 
 

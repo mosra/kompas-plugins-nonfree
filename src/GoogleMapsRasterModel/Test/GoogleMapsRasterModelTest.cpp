@@ -1,13 +1,13 @@
 /*
     Copyright © 2007, 2008, 2009, 2010 Vladimír Vondruš <mosra@centrum.cz>
 
-    This file is part of Map2X.
+    This file is part of Kompas.
 
-    Map2X is free software: you can redistribute it and/or modify
+    Kompas is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License version 3
     only, as published by the Free Software Foundation.
 
-    Map2X is distributed in the hope that it will be useful,
+    Kompas is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU Lesser General Public License version 3 for more details.
@@ -21,12 +21,12 @@
 #include "testConfigure.h"
 
 using namespace std;
-using namespace Map2X::Utility;
-using namespace Map2X::Core;
+using namespace Kompas::Utility;
+using namespace Kompas::Core;
 
-QTEST_APPLESS_MAIN(Map2X::Plugins::Test::GoogleMapsRasterModelTest)
+QTEST_APPLESS_MAIN(Kompas::Plugins::Test::GoogleMapsRasterModelTest)
 
-namespace Map2X { namespace Plugins { namespace Test {
+namespace Kompas { namespace Plugins { namespace Test {
 
 void GoogleMapsRasterModelTest::version2() {
     QVERIFY(model.addPackage(Directory::join(GOOGLEMAPSRASTERMODEL_TEST_DIR, "map.conf")) == 0);
@@ -65,7 +65,7 @@ void GoogleMapsRasterModelTest::recognizeFile_data() {
         << "map.conf" << "version=3\nmodel=GoogleMapsRasterModel"
         << (int) AbstractRasterModel::FullySupported;
     QTest::newRow("genericModel")
-        << "map.conf" << "version=3\nmodel=Map2XRasterModel"
+        << "map.conf" << "version=3\nmodel=KompasRasterModel"
         << (int) AbstractRasterModel::NotSupported;
     QTest::newRow("version2Unpacked")
         << "map.conf" << "api=google\npacked=false"

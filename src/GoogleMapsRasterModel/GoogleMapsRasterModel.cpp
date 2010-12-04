@@ -1,13 +1,13 @@
 /*
     Copyright © 2007, 2008, 2009, 2010 Vladimír Vondruš <mosra@centrum.cz>
 
-    This file is part of Map2X.
+    This file is part of Kompas.
 
-    Map2X is free software: you can redistribute it and/or modify
+    Kompas is free software: you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License version 3
     only, as published by the Free Software Foundation.
 
-    Map2X is distributed in the hope that it will be useful,
+    Kompas is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
     GNU Lesser General Public License version 3 for more details.
@@ -20,15 +20,15 @@
 #include "Utility/Directory.h"
 
 using namespace std;
-using namespace Map2X::Core;
-using namespace Map2X::Utility;
+using namespace Kompas::Core;
+using namespace Kompas::Utility;
 
-PLUGIN_REGISTER(Map2X::Plugins::GoogleMapsRasterModel,
-                "cz.mosra.Map2X.Core.AbstractRasterModel/0.1")
+PLUGIN_REGISTER(Kompas::Plugins::GoogleMapsRasterModel,
+                "cz.mosra.Kompas.Core.AbstractRasterModel/0.1")
 
-namespace Map2X { namespace Plugins {
+namespace Kompas { namespace Plugins {
 
-GoogleMapsRasterModel::GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): Map2XRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
+GoogleMapsRasterModel::GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
     /* All zoom levels for online maps */
     for(Zoom i = 0; i != 23; ++i)
         zoomLevelsOnline.push_back(i);
@@ -42,7 +42,7 @@ GoogleMapsRasterModel::GoogleMapsRasterModel(PluginManager::AbstractPluginManage
 }
 
 AbstractRasterModel::SupportLevel GoogleMapsRasterModel::recognizeFile(const std::string& filename, istream& file) const {
-    SupportLevel parent = Map2XRasterModel::recognizeFile(filename, file);
+    SupportLevel parent = KompasRasterModel::recognizeFile(filename, file);
     if(parent != NotSupported) return parent;
 
     file.clear();
@@ -58,7 +58,7 @@ AbstractRasterModel::SupportLevel GoogleMapsRasterModel::recognizeFile(const std
     return NotSupported;
 }
 
-string GoogleMapsRasterModel::tileUrl(const std::string& layer, Zoom z, const Map2X::Core::TileCoords& coords) const {
+string GoogleMapsRasterModel::tileUrl(const std::string& layer, Zoom z, const Kompas::Core::TileCoords& coords) const {
     /* "Random" server number */
     int servernum = (coords.x + 2*coords.y)%4;
 
@@ -81,8 +81,8 @@ string GoogleMapsRasterModel::tileUrl(const std::string& layer, Zoom z, const Ma
     return url.str();
 }
 
-Map2XRasterModel::Package* GoogleMapsRasterModel::parsePackage(const Configuration* conf) {
-    Package* p = Map2XRasterModel::parsePackage(conf);
+KompasRasterModel::Package* GoogleMapsRasterModel::parsePackage(const Configuration* conf) {
+    Package* p = KompasRasterModel::parsePackage(conf);
     if(p) return p; /* Version 3 package */
 
     /* Not version 3 package, backward compatibility with version 2 */
@@ -127,12 +127,12 @@ Map2XRasterModel::Package* GoogleMapsRasterModel::parsePackage(const Configurati
     return p;
 }
 
-string GoogleMapsRasterModel::tileFromArchive(const string& path, const string& layer, Zoom z, vector< Map2XRasterArchiveReader*>* archives, unsigned int archiveId, int packageVersion, unsigned int tileId) {
+string GoogleMapsRasterModel::tileFromArchive(const string& path, const string& layer, Zoom z, vector< KompasRasterArchiveReader*>* archives, unsigned int archiveId, int packageVersion, unsigned int tileId) {
     /* Convert layer name from version 3 to version 2 if package is in version 2 */
     if(packageVersion == 3)
-        return Map2X::Plugins::Map2XRasterModel::tileFromArchive(path, layer, z, archives, archiveId, packageVersion, tileId);
+        return Kompas::Plugins::KompasRasterModel::tileFromArchive(path, layer, z, archives, archiveId, packageVersion, tileId);
     else
-        return Map2X::Plugins::Map2XRasterModel::tileFromArchive(path, name3to2(layer, packageVersion), z, archives, archiveId, 3, tileId);
+        return Kompas::Plugins::KompasRasterModel::tileFromArchive(path, name3to2(layer, packageVersion), z, archives, archiveId, 3, tileId);
 }
 
 string GoogleMapsRasterModel::name2to3(const string& name, int* packageVersion) {
