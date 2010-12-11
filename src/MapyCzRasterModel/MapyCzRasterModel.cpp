@@ -43,7 +43,7 @@ namespace Kompas { namespace Plugins {
 MapyCzRasterModel::MapyCzRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(1, 1, 6, 6) {
     /* All zoom levels for online maps */
     for(Zoom i = 3; i != 19; ++i)
-        zoomLevelsOnline.push_back(i);
+        zoomLevelsOnline.insert(i);
 
     /* All layers for online maps */
     layersOnline.push_back(__zakladni);
@@ -132,12 +132,11 @@ KompasRasterModel::Package* MapyCzRasterModel::parsePackage(const Configuration*
     p->name = conf->value<string>("caption");
 
     /* Zoom levels, sorted */
-    p->zoomLevels = conf->values<Zoom>("zoom");
-    if(p->zoomLevels.empty()) return 0;
-    sort(p->zoomLevels.begin(), p->zoomLevels.end());
+    vector<Zoom> z = conf->values<Zoom>("zoom");
+    p->zoomLevels.insert(z.begin(), z.end());
 
     /* Divisor for area size */
-    unsigned int divisor = pow2(16-p->zoomLevels[0]);
+    unsigned int divisor = pow2(16-*p->zoomLevels.begin());
 
     /* Area size (hex) */
     p->area.x = conf->value<unsigned int>("begin_x", 0, Configuration::Hex)/divisor;
@@ -157,7 +156,7 @@ KompasRasterModel::Package* MapyCzRasterModel::parsePackage(const Configuration*
     /* move_x, move_y etc. is ignored */
 
     /* The package should have non-empty area, at least one layer (zoom tested above) */
-    if(p->area == TileArea() || p->layers.empty())
+    if(p->area == TileArea() || p->layers.empty() || p->zoomLevels.empty())
         return 0;
 
     return p;

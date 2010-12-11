@@ -31,7 +31,7 @@ namespace Kompas { namespace Plugins {
 GoogleMapsRasterModel::GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
     /* All zoom levels for online maps */
     for(Zoom i = 0; i != 23; ++i)
-        zoomLevelsOnline.push_back(i);
+        zoomLevelsOnline.insert(i);
 
     /* All layers for online maps */
     layersOnline.push_back("Map");
@@ -99,9 +99,8 @@ KompasRasterModel::Package* GoogleMapsRasterModel::parsePackage(const Configurat
     p->name = conf->value<string>("caption");
 
     /* Zoom levels, sorted */
-    p->zoomLevels = conf->values<Zoom>("zoom");
-    if(p->zoomLevels.empty()) return 0;
-    sort(p->zoomLevels.begin(), p->zoomLevels.end());
+    vector<Zoom> z = conf->values<Zoom>("zoom");
+    p->zoomLevels.insert(z.begin(), z.end());
 
     /* Area size */
     p->area.x = conf->value<unsigned int>("begin_x");
@@ -120,8 +119,8 @@ KompasRasterModel::Package* GoogleMapsRasterModel::parsePackage(const Configurat
 
     /* move_x, move_y etc. is ignored */
 
-    /* The package should have non-empty area, at least one layer (zoom tested above) */
-    if(p->area == TileArea() || p->layers.empty())
+    /* The package should have non-empty area, at least one layer and zoom */
+    if(p->area == TileArea() || p->layers.empty() || p->zoomLevels.empty())
         return 0;
 
     return p;

@@ -38,7 +38,7 @@ class MapyCzRasterModel: public KompasRasterModel {
         inline virtual std::string copyright() const
             { return "© PLANstudio, 2005-2010, © SHOCart, s.r.o., © Seznam.cz"; }
 
-        inline virtual std::vector<Core::Zoom> zoomLevels() const {
+        inline virtual std::set<Core::Zoom> zoomLevels() const {
             return online() ? zoomLevelsOnline : KompasRasterModel::zoomLevels();
         }
         inline virtual Core::TileArea area() const {
@@ -54,7 +54,7 @@ class MapyCzRasterModel: public KompasRasterModel {
         virtual std::string tileUrl(const std::string& layer, Core::Zoom z, const Kompas::Core::TileCoords& coords) const;
 
     private:
-        std::vector<Core::Zoom> zoomLevelsOnline;
+        std::set<Core::Zoom> zoomLevelsOnline;
         Core::TileArea areaOnline;
         std::vector<std::string> layersOnline, overlaysOnline;
 

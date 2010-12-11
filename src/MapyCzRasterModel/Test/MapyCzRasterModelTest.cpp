@@ -33,10 +33,10 @@ void MapyCzRasterModelTest::version2() {
     QVERIFY(model.area() == TileArea(255, 257, 4, 4));
     QVERIFY(model.packageAttribute(0, AbstractRasterModel::Name) == "České Budějovice a okolí");
 
-    vector<Zoom> zoomLevels;
-    zoomLevels.push_back(9);
-    zoomLevels.push_back(10);
-    zoomLevels.push_back(11);
+    set<Zoom> zoomLevels;
+    zoomLevels.insert(9);
+    zoomLevels.insert(10);
+    zoomLevels.insert(11);
     QVERIFY(model.zoomLevels() == zoomLevels);
 
     vector<string> layers;

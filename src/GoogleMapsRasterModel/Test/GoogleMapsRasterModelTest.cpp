@@ -33,11 +33,11 @@ void GoogleMapsRasterModelTest::version2() {
     QVERIFY(model.area() == TileArea(62, 41, 3, 2));
     QVERIFY(model.packageAttribute(0, AbstractRasterModel::Name) == "Jih Anglie");
 
-    vector<Zoom> zoomLevels;
-    zoomLevels.push_back(7);
-    zoomLevels.push_back(8);
-    zoomLevels.push_back(9);
-    zoomLevels.push_back(10);
+    set<Zoom> zoomLevels;
+    zoomLevels.insert(7);
+    zoomLevels.insert(8);
+    zoomLevels.insert(9);
+    zoomLevels.insert(10);
     QVERIFY(model.zoomLevels() == zoomLevels);
 
     vector<string> layers;

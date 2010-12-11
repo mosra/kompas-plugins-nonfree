@@ -41,7 +41,7 @@ class GoogleMapsRasterModel: public KompasRasterModel {
         inline virtual std::string copyright() const
             { return "© 2010 Google, Map Data © 2010 Tele Atlas."; }
 
-        inline virtual std::vector<Core::Zoom> zoomLevels() const {
+        inline virtual std::set<Core::Zoom> zoomLevels() const {
             return online() ? zoomLevelsOnline : KompasRasterModel::zoomLevels();
         }
         inline virtual Core::TileArea area() const {
@@ -63,7 +63,7 @@ class GoogleMapsRasterModel: public KompasRasterModel {
     private:
         Plugins::MercatorProjection _projection;
 
-        std::vector<Core::Zoom> zoomLevelsOnline;
+        std::set<Core::Zoom> zoomLevelsOnline;
         Core::TileArea areaOnline;
         std::vector<std::string> layersOnline, overlaysOnline;
 
