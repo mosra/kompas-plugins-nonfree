@@ -27,7 +27,7 @@ namespace Kompas { namespace Plugins {
 class MapyCzRasterModel: public KompasRasterModel {
     public:
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
-        MapyCzRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName);
+        MapyCzRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
         inline virtual int features() const {
             return KompasRasterModel::features()|LoadableFromUrl|NonConvertableFormat;

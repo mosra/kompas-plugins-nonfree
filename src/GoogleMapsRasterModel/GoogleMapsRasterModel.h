@@ -28,7 +28,7 @@ namespace Kompas { namespace Plugins {
 class GoogleMapsRasterModel: public KompasRasterModel {
     public:
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
-        GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName);
+        GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
         inline virtual int features() const {
             return KompasRasterModel::features()|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;
