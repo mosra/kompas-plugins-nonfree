@@ -23,6 +23,10 @@ using namespace std;
 using namespace Kompas::Core;
 using namespace Kompas::Utility;
 
+#define __base      "base"
+#define __satellite "satellite"
+#define __labels    "labels"
+
 PLUGIN_REGISTER(Kompas::Plugins::GoogleMapsRasterModel,
                 "cz.mosra.Kompas.Core.AbstractRasterModel/0.1")
 
@@ -34,11 +38,11 @@ GoogleMapsRasterModel::GoogleMapsRasterModel(PluginManager::AbstractPluginManage
         zoomLevelsOnline.insert(i);
 
     /* All layers for online maps */
-    layersOnline.push_back("Map");
-    layersOnline.push_back("Satellite");
+    layersOnline.push_back(__base);
+    layersOnline.push_back(__satellite);
 
     /* All overlays for online maps */
-    overlaysOnline.push_back("Labels");
+    overlaysOnline.push_back(__labels);
 }
 
 AbstractRasterModel::SupportLevel GoogleMapsRasterModel::recognizeFile(const std::string& filename, istream& file) const {
@@ -68,11 +72,11 @@ string GoogleMapsRasterModel::tileUrl(const std::string& layer, Zoom z, const Ko
     /* URL for given layer */
     ostringstream url;
     url << "http://";
-    if(layer == "Map")
+    if(layer == __base)
         url << "mt" << servernum << ".google.com/vt/lyrs=m@130";
-    else if(layer == "Satellite")
+    else if(layer == __satellite)
         url << "khm" << servernum << ".google.com/kh/v=66";
-    else if(layer == "Labels")
+    else if(layer == __labels)
         url << "mt" << servernum << ".google.com/vt/lyrs=h@130";
     else return "";
 
@@ -142,13 +146,13 @@ string GoogleMapsRasterModel::name2to3(const string& name, int* packageVersion) 
 
     if(name[2] == '.') {
         shift = 20;
-        ret = "Map";
+        ret = __base;
     } else if(name[2] == 'p') {
         shift = 10;
-        ret = "Satellite";
+        ret = __satellite;
     } else if(name[2] == 't') {
         shift = 0;
-        ret = "Labels";
+        ret = __labels;
     } else return "";
 
     /* Add layer numbers to packageVersion */
@@ -169,12 +173,12 @@ string GoogleMapsRasterModel::name3to2(const string& name, int packageVersion) {
     string character;
     int shift;
 
-    if(name == "Map") {
+    if(name == __base) {
         shift = 20;
-    } else if(name == "Satellite") {
+    } else if(name == __satellite) {
         shift = 10;
         character = "p";
-    } else if(name == "Labels") {
+    } else if(name == __labels) {
         shift = 0;
         character = "t";
     } else return "";

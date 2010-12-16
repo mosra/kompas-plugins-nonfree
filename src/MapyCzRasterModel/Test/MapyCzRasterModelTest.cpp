@@ -40,17 +40,17 @@ void MapyCzRasterModelTest::version2() {
     QVERIFY(model.zoomLevels() == zoomLevels);
 
     vector<string> layers;
-    layers.push_back("Základní");
-    layers.push_back("Fotomapa");
+    layers.push_back("base");
+    layers.push_back("satellite");
     QVERIFY(model.layers() == layers);
 
     vector<string> overlays;
-    overlays.push_back("Popisy");
-    overlays.push_back("Stínování");
+    overlays.push_back("labels");
+    overlays.push_back("relief");
     QVERIFY(model.overlays() == overlays);
 
-    QVERIFY(model.tileFromPackage("Základní", 9, TileCoords(257, 257)) == "3");
-    QVERIFY(model.tileFromPackage("Základní", 9, TileCoords(255, 258)) == "5");
+    QVERIFY(model.tileFromPackage("base", 9, TileCoords(257, 257)) == "3");
+    QVERIFY(model.tileFromPackage("base", 9, TileCoords(255, 258)) == "5");
 }
 
 void MapyCzRasterModelTest::recognizeFile_data() {

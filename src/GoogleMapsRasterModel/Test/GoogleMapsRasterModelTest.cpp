@@ -41,16 +41,16 @@ void GoogleMapsRasterModelTest::version2() {
     QVERIFY(model.zoomLevels() == zoomLevels);
 
     vector<string> layers;
-    layers.push_back("Map");
-    layers.push_back("Satellite");
+    layers.push_back("base");
+    layers.push_back("satellite");
     QVERIFY(model.layers() == layers);
 
     vector<string> overlays;
-    overlays.push_back("Labels");
+    overlays.push_back("labels");
     QVERIFY(model.overlays() == overlays);
 
-    QVERIFY(model.tileFromPackage("Map", 7, TileCoords(64, 41)) == "3");
-    QVERIFY(model.tileFromPackage("Map", 7, TileCoords(63, 42)) == "5");
+    QVERIFY(model.tileFromPackage("base", 7, TileCoords(64, 41)) == "3");
+    QVERIFY(model.tileFromPackage("base", 7, TileCoords(63, 42)) == "5");
 }
 
 void GoogleMapsRasterModelTest::recognizeFile_data() {

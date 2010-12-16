@@ -24,16 +24,15 @@ using namespace std;
 using namespace Kompas::Utility;
 using namespace Kompas::Core;
 
-/** @todo Do it differently (nick + translated names) */
-#define __zakladni      "Základní"
-#define __turisticka    "Turistická"
-#define __fotomapa      "Fotomapa"
-#define __historicka    "Historická 1836-52"
-#define __fotomapa02    "Fotomapa 2002-03"
-#define __stinovani     "Stínování"
-#define __popisy        "Popisy"
-#define __trasy         "Turistické trasy"
-#define __cyklo         "Cyklostezky"
+#define __base          "base"
+#define __tourist       "tourist"
+#define __satellite     "satellite"
+#define __historic      "historic"
+#define __satellite02   "satellite02"
+#define __relief        "relief"
+#define __labels        "labels"
+#define __touristpaths  "touristpaths"
+#define __cyclingpaths  "cyclingpaths"
 
 PLUGIN_REGISTER(Kompas::Plugins::MapyCzRasterModel,
                 "cz.mosra.Kompas.Core.AbstractRasterModel/0.1")
@@ -46,17 +45,17 @@ MapyCzRasterModel::MapyCzRasterModel(PluginManager::AbstractPluginManager* manag
         zoomLevelsOnline.insert(i);
 
     /* All layers for online maps */
-    layersOnline.push_back(__zakladni);
-    layersOnline.push_back(__turisticka);
-    layersOnline.push_back(__fotomapa);
-    layersOnline.push_back(__historicka);
-    layersOnline.push_back(__fotomapa02);
+    layersOnline.push_back(__base);
+    layersOnline.push_back(__tourist);
+    layersOnline.push_back(__satellite);
+    layersOnline.push_back(__historic);
+    layersOnline.push_back(__satellite02);
 
     /* All overlays for online maps */
-    overlaysOnline.push_back(__stinovani);
-    overlaysOnline.push_back(__popisy);
-    overlaysOnline.push_back(__trasy);
-    overlaysOnline.push_back(__cyklo);
+    overlaysOnline.push_back(__relief);
+    overlaysOnline.push_back(__labels);
+    overlaysOnline.push_back(__touristpaths);
+    overlaysOnline.push_back(__cyclingpaths);
 }
 
 AbstractRasterModel::SupportLevel MapyCzRasterModel::recognizeFile(const std::string& filename, istream& file) const {
@@ -84,25 +83,25 @@ string MapyCzRasterModel::tileUrl(const std::string& layer, Zoom z, const TileCo
     ostringstream url;
     url << "http://m" << servernum << ".mapserver.mapy.cz/";
     /** @todo Types base / base-n */
-    if(layer == __zakladni)
+    if(layer == __base)
         url << "base-n";
-    else if(layer == __turisticka)
+    else if(layer == __tourist)
         url << "turist";
-    else if(layer == __fotomapa)
+    else if(layer == __satellite)
         url << "ophoto";
     /** @todo army1? */
-    else if(layer == __historicka)
+    else if(layer == __historic)
         url << "army2";
-    else if(layer == __fotomapa02)
+    else if(layer == __satellite02)
         url << "ophoto0203";
     /** @todo Types relief-l / relief-h */
-    else if(layer == __stinovani)
+    else if(layer == __relief)
         url << "relief-l";
-    else if(layer == __popisy)
+    else if(layer == __labels)
         url << "hybrid";
-    else if(layer == __trasy)
+    else if(layer == __touristpaths)
         url << "ttur";
-    else if(layer == __cyklo)
+    else if(layer == __cyclingpaths)
         url << "tcyklo";
     else return "";
 
@@ -172,29 +171,29 @@ string MapyCzRasterModel::tileFromArchive(const std::string& path, const std::st
 
 
 string MapyCzRasterModel::name2to3(const string& name) {
-    if(name == "base")          return __zakladni;
-    if(name == "ophoto")        return __fotomapa;
-    if(name == "ophoto0203")    return __fotomapa02;
-    if(name == "turist")        return __turisticka;
-    if(name == "army2")         return __historicka;
-    if(name == "hybrid")        return __popisy;
-    if(name == "relief-l")      return __stinovani;
-    if(name == "ttur")          return __trasy;
-    if(name == "tcyklo")        return __cyklo;
+    if(name == "base")          return __base;
+    if(name == "ophoto")        return __satellite;
+    if(name == "ophoto0203")    return __satellite02;
+    if(name == "turist")        return __tourist;
+    if(name == "army2")         return __historic;
+    if(name == "hybrid")        return __labels;
+    if(name == "relief-l")      return __relief;
+    if(name == "ttur")          return __touristpaths;
+    if(name == "tcyklo")        return __cyclingpaths;
 
     return "";
 }
 
 string MapyCzRasterModel::name3to2(const string& name) {
-    if(name == __zakladni)      return "base";
-    if(name == __fotomapa)      return "ophoto";
-    if(name == __fotomapa02)    return "ophoto0203";
-    if(name == __turisticka)    return "turist";
-    if(name == __historicka)    return "army2";
-    if(name == __popisy)        return "hybrid";
-    if(name == __stinovani)     return "relief-l";
-    if(name == __trasy)         return "ttur";
-    if(name == __cyklo)         return "tcyklo";
+    if(name == __base)          return "base";
+    if(name == __satellite)     return "ophoto";
+    if(name == __satellite02)   return "ophoto0203";
+    if(name == __tourist)       return "turist";
+    if(name == __historic)      return "army2";
+    if(name == __labels)        return "hybrid";
+    if(name == __relief)        return "relief-l";
+    if(name == __touristpaths)  return "ttur";
+    if(name == __cyclingpaths)  return "tcyklo";
 
     return "";
 }
