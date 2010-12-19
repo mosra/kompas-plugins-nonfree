@@ -31,7 +31,7 @@ class GoogleMapsRasterModel: public KompasRasterModel {
         GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
         inline virtual int features() const {
-            return KompasRasterModel::features()|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;
+            return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;
         }
         virtual SupportLevel recognizeFile(const std::string& filename, std::istream& file) const;
         inline virtual const Kompas::Core::AbstractProjection* projection() const

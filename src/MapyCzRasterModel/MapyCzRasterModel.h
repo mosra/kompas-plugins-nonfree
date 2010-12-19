@@ -30,7 +30,7 @@ class MapyCzRasterModel: public KompasRasterModel {
         MapyCzRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
         inline virtual int features() const {
-            return KompasRasterModel::features()|LoadableFromUrl|NonConvertableFormat;
+            return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat;
         }
         virtual SupportLevel recognizeFile(const std::string& filename, std::istream& file) const;
         inline virtual Core::TileSize tileSize() const
