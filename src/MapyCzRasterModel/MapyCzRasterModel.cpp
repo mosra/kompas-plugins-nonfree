@@ -164,11 +164,10 @@ KompasRasterModel::Package* MapyCzRasterModel::parsePackage(const Configuration*
 string MapyCzRasterModel::tileFromArchive(const std::string& path, const std::string& layer, Zoom z, std::vector< KompasRasterArchiveReader* >* archives, unsigned int archiveId, int packageVersion, unsigned int tileId) {
     /* Convert layer name from version 3 to version 2 if package is in version 2 */
     if(packageVersion == 2)
-        return Kompas::Plugins::KompasRasterModel::tileFromArchive(path, name3to2(layer), z, archives, archiveId, 3, tileId);
+        return Kompas::Plugins::KompasRasterModel::tileFromArchive(path, name3to2(layer), z, archives, archiveId, 2, tileId);
     else
         return Kompas::Plugins::KompasRasterModel::tileFromArchive(path, layer, z, archives, archiveId, packageVersion, tileId);
 }
-
 
 string MapyCzRasterModel::name2to3(const string& name) {
     if(name == "base")          return __base;

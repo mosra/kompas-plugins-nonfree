@@ -135,7 +135,7 @@ string GoogleMapsRasterModel::tileFromArchive(const string& path, const string& 
     if(packageVersion == 3)
         return Kompas::Plugins::KompasRasterModel::tileFromArchive(path, layer, z, archives, archiveId, packageVersion, tileId);
     else
-        return Kompas::Plugins::KompasRasterModel::tileFromArchive(path, name3to2(layer, packageVersion), z, archives, archiveId, 3, tileId);
+        return Kompas::Plugins::KompasRasterModel::tileFromArchive(path, name3to2(layer, packageVersion), z, archives, archiveId, 2, tileId);
 }
 
 string GoogleMapsRasterModel::name2to3(const string& name, int* packageVersion) {
