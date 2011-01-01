@@ -72,7 +72,7 @@ void GoogleMapsRasterModelTest::recognizeFile_data() {
         << (int) AbstractRasterModel::NotSupported;
     QTest::newRow("version2Packed")
         << "map.conf" << "api=google\npacked=true"
-        << (int) AbstractRasterModel::FullySupported;
+        << (int) AbstractRasterModel::DeprecatedSupport;
 }
 
 void GoogleMapsRasterModelTest::recognizeFile() {

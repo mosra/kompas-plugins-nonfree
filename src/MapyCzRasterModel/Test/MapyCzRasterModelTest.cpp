@@ -72,7 +72,7 @@ void MapyCzRasterModelTest::recognizeFile_data() {
         << (int) AbstractRasterModel::NotSupported;
     QTest::newRow("version2Packed")
         << "map.conf" << "api=seznam\npacked=true"
-        << (int) AbstractRasterModel::FullySupported;
+        << (int) AbstractRasterModel::DeprecatedSupport;
 }
 
 void MapyCzRasterModelTest::recognizeFile() {

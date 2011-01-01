@@ -70,7 +70,7 @@ AbstractRasterModel::SupportLevel MapyCzRasterModel::recognizeFile(const std::st
     Configuration conf(file, Configuration::ReadOnly);
 
     if(conf.value<string>("api") == "seznam" && conf.value<bool>("packed"))
-        return FullySupported;
+        return DeprecatedSupport;
 
     return NotSupported;
 }

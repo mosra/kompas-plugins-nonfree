@@ -57,7 +57,7 @@ AbstractRasterModel::SupportLevel GoogleMapsRasterModel::recognizeFile(const std
     Configuration conf(file, Configuration::ReadOnly);
 
     if(conf.value<string>("api") == "google" && conf.value<bool>("packed"))
-        return FullySupported;
+        return DeprecatedSupport;
 
     return NotSupported;
 }
