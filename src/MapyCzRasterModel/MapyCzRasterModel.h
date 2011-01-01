@@ -23,7 +23,10 @@
 
 namespace Kompas { namespace Plugins {
 
-/** @brief Mapy.cz */
+/**
+ * @brief Mapy.cz
+ * @todo @c VERSION-0.2 UtmProjection
+ */
 class MapyCzRasterModel: public KompasRasterModel {
     public:
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
