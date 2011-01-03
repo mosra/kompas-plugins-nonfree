@@ -2,7 +2,7 @@
 pkgname=kompas-plugins-nonfree-git
 pkgver=20110102
 pkgrel=1
-pkgdesc="Non-free plugins for Kompas navigation system (Git version)"
+pkgdesc="Non-free plugins for Kompas navigation software (Git version)"
 arch=('i686' 'x86_64')
 url="http://mosra.cz/blog/kompas.php"
 license=('LGPLv3')
