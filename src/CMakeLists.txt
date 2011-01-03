@@ -9,6 +9,7 @@ if(QT_PLUGINS)
     find_package(Qt4 REQUIRED)
 endif()
 
+add_subdirectory(BingMapsRasterModel)
 add_subdirectory(GoogleMapsRasterModel)
 add_subdirectory(MapyCzRasterModel)
 add_subdirectory(YahooMapsRasterModel)
