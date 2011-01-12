@@ -63,8 +63,8 @@ AbstractRasterModel::SupportLevel GoogleMapsRasterModel::recognizeFile(const std
 }
 
 string GoogleMapsRasterModel::tileUrl(const std::string& layer, Zoom z, const Kompas::Core::TileCoords& coords) const {
-    /* "Random" server number */
-    int servernum = (coords.x + 2*coords.y)%4;
+    /* Random server number */
+    int servernum = rand()%2;
 
     /* Galileo substring */
     string galileo = string("Galileo").substr(0, (coords.x*3 + coords.y)%8);
@@ -73,11 +73,11 @@ string GoogleMapsRasterModel::tileUrl(const std::string& layer, Zoom z, const Ko
     ostringstream url;
     url << "http://";
     if(layer == __base)
-        url << "mt" << servernum << ".google.com/vt/lyrs=m@130";
+        url << "mt" << servernum << ".google.com/vt/lyrs=m@142";
     else if(layer == __satellite)
-        url << "khm" << servernum << ".google.com/kh/v=66";
+        url << "khm" << servernum << ".google.com/kh/v=76";
     else if(layer == __labels)
-        url << "mt" << servernum << ".google.com/vt/lyrs=h@130";
+        url << "mt" << servernum << ".google.com/vt/lyrs=h@142";
     else return "";
 
     url << "&x=" << coords.x << "&y=" << coords.y << "&z=" << z << "&s=" << galileo;
