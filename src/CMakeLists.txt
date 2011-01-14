@@ -11,6 +11,7 @@ endif()
 
 add_subdirectory(GoogleMapsRasterModel)
 add_subdirectory(MapyCzRasterModel)
+add_subdirectory(YahooMapsRasterModel)
 
 if(BUILD_TESTS)
     enable_testing()
