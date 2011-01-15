@@ -13,6 +13,7 @@ add_subdirectory(CelestialMap1675RasterModel)
 add_subdirectory(BingMapsRasterModel)
 add_subdirectory(GoogleMapsRasterModel)
 add_subdirectory(MapyCzRasterModel)
+add_subdirectory(OviMapsRasterModel)
 add_subdirectory(YahooMapsRasterModel)
 
 if(BUILD_TESTS)
