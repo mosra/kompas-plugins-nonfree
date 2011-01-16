@@ -1,6 +1,6 @@
 # Author: mosra <mosra@centrum.cz>
 pkgname=kompas-plugins-nonfree
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Non-free plugins for Kompas navigation software"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ makedepends=('cmake')
 depends=('kompas-core')
 conflicts=('kompas-plugins-nonfree-git')
 source=("https://github.com/mosra/${pkgname}/tarball/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('aa0b2c56befbaf0b80c9b8313a74d0d6')
+md5sums=('dbb73ec0fcd0ac8385ea45c5ef2d4567')
 
 build() {
     mkdir -p "${srcdir}/build"
