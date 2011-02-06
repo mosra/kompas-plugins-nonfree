@@ -28,7 +28,7 @@ using namespace Kompas::Utility;
 #define __terrain   "terrain"
 
 PLUGIN_REGISTER(Kompas::Plugins::OviMapsRasterModel,
-                "cz.mosra.Kompas.Core.AbstractRasterModel/0.1")
+                "cz.mosra.Kompas.Core.AbstractRasterModel/0.2")
 
 namespace Kompas { namespace Plugins {
 

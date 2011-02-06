@@ -30,7 +30,7 @@ using namespace Kompas::Utility;
 #define __birdseyelabels    "birdseyelabels"
 
 PLUGIN_REGISTER(Kompas::Plugins::BingMapsRasterModel,
-                "cz.mosra.Kompas.Core.AbstractRasterModel/0.1")
+                "cz.mosra.Kompas.Core.AbstractRasterModel/0.2")
 
 namespace Kompas { namespace Plugins {
 

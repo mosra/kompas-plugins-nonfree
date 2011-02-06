@@ -35,7 +35,7 @@ using namespace Kompas::Core;
 #define __cyclingpaths  "cyclingpaths"
 
 PLUGIN_REGISTER(Kompas::Plugins::MapyCzRasterModel,
-                "cz.mosra.Kompas.Core.AbstractRasterModel/0.1")
+                "cz.mosra.Kompas.Core.AbstractRasterModel/0.2")
 
 namespace Kompas { namespace Plugins {
 

@@ -33,6 +33,8 @@ class YahooMapsRasterModel: public KompasRasterModel {
         inline virtual int features() const {
             return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;
         }
+        inline virtual std::string celestialBody() const
+            { return "EarthCelestialBody"; }
         inline virtual const Core::AbstractProjection* projection() const
             { return &_projection; }
         inline virtual Core::TileSize tileSize() const

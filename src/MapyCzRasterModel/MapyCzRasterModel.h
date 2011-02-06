@@ -36,6 +36,8 @@ class MapyCzRasterModel: public KompasRasterModel {
             return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat;
         }
         virtual SupportLevel recognizeFile(const std::string& filename, std::istream& file) const;
+        inline virtual std::string celestialBody() const
+            { return "EarthCelestialBody"; }
         inline virtual Core::TileSize tileSize() const
             { return Core::TileSize(256,256); }
         inline virtual std::string copyright() const

@@ -35,6 +35,8 @@ class OviMapsRasterModel: public KompasRasterModel {
         }
         inline virtual const Core::AbstractProjection* projection() const
             { return &_projection; }
+        inline virtual std::string celestialBody() const
+            { return "EarthCelestialBody"; }
         inline virtual Core::TileSize tileSize() const
             { return Core::TileSize(256,256); }
         inline virtual std::string copyright() const

@@ -35,6 +35,8 @@ class GoogleMoonRasterModel: public KompasRasterModel {
         }
         inline virtual const Kompas::Core::AbstractProjection* projection() const
             { return &_projection; }
+        inline virtual std::string celestialBody() const
+            { return "MoonCelestialBody"; }
         inline virtual Core::TileSize tileSize() const
             { return Core::TileSize(256,256); }
         inline virtual std::string copyright() const

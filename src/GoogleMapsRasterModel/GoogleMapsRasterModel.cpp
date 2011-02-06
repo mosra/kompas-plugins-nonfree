@@ -28,7 +28,7 @@ using namespace Kompas::Utility;
 #define __labels    "labels"
 
 PLUGIN_REGISTER(Kompas::Plugins::GoogleMapsRasterModel,
-                "cz.mosra.Kompas.Core.AbstractRasterModel/0.1")
+                "cz.mosra.Kompas.Core.AbstractRasterModel/0.2")
 
 namespace Kompas { namespace Plugins {
 
