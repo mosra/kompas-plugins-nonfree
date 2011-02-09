@@ -24,7 +24,36 @@
 
 namespace Kompas { namespace Plugins {
 
-/** @brief Bing Maps */
+/**
+@brief Bing Maps
+
+@section BingMapsRasterModel_TileNumbering Tile numbering
+Tile coordinates is one long string composed of characters <tt>0, 1, 2, 3</tt>.
+The numbering is done recursive from lowest zoom. In zoom 1, the map is 2x2
+tiles and the tiles are numbered like this:
+<pre>
++---+---+
+| 0 | 1 |
++---+---+
+| 2 | 3 |
++---+---+
+</pre>
+In next (larger) zoom, every tile is divided into another four and these are
+numbered the same way. Their number is added to number of tile in previous
+(smaller) zoom:
+<pre>
++----+----+----+----+
+| 00 | 01 | 10 | 11 |
++----+----+----+----+
+| 02 | 03 | 12 | 13 |
++----+----+----+----+
+| 20 | 21 | 30 | 31 |
++----+----+----+----+
+| 22 | 23 | 32 | 33 |
++----+----+----+----+
+</pre>
+And so on until the destination zoom level is reached.
+ */
 class BingMapsRasterModel: public KompasRasterModel {
     public:
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
