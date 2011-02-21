@@ -9,6 +9,10 @@ if(QT_PLUGINS OR BUILD_TESTS)
     include_directories(${QT_INCLUDE_DIR})
 endif()
 
+if(QT_PLUGINS)
+     include_directories(${KOMPAS_QT_INCLUDE_DIR})
+endif()
+
 add_subdirectory(BingMapsRasterModel)
 add_subdirectory(CelestialMap1675RasterModel)
 add_subdirectory(GoogleMapsRasterModel)
