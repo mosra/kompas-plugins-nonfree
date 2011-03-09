@@ -1,0 +1,24 @@
+Source: kompas-plugins-nonfree
+Priority: optional
+Maintainer: Vladimír Vondruš <mosra@centrum.cz>
+Build-Depends: debhelper (>= 7.0.50~), cmake (>= 2.6.0), kompas-core-dev, kompas-plugins-dev
+Standards-Version: 3.8.4
+Section: libs
+Homepage: http://mosra.cz/blog/kompas.php
+Vcs-Git: git://github.com/mosra/kompas-plugins-nonfree.git
+Vcs-Browser: https://github.com/mosra/kompas-plugins-nonfree
+
+Package: kompas-plugins-nonfree-dev
+Section: libdevel
+Architecture: any
+Depends: kompas-core-dev (=${binary:Version}), kompas-plugins-dev (=${binary:Version}), kompas-plugins-nonfree (=${binary:Version})
+Description: Kompas Non-free plugins development files
+ Non-free plugins headers needed for developing for Kompas.
+
+Package: kompas-plugins-nonfree
+Section: libs
+Architecture: any
+Depends: kompas-core (=${binary:Version}), kompas-plugins (=${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Non-free plugins for Kompas navigation software
+ Plugins for viewing content under restrictive licenses, like for example
+ Google Maps.
