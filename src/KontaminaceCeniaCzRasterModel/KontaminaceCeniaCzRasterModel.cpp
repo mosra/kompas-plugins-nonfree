@@ -20,8 +20,20 @@
 #define __landsat1      "landsat1"
 #define __landsat2      "landsat2"
 #define __labels        "labels"
+
+/** @todo Layers "Roky snímkování" and "Evidovaná kontaminovaná místa" are
+regenerated on every request to fit the viewport bounding box. Skipping them
+for now as the URL looks crazy, but this approach seems to be common on other
+GIS-powered map servers, so it would be good to have it supported. */
+
+/*
+geoportal.gov.cz/ArcGIS/rest/services/CENIA/cenia_nikm_klady/MapServer/export?size=1195%2C390&f=image&bboxSR=102067&dpi=96&layers=show%3A0&bbox=%2D743029%2E5910591821%2C%2D1103890%2E7797815595%2C%2D666539%2E8780797562%2C%2D1078927%2E6098552197&format=png8&transparent=true&imageSR=102067 (years)
+
+geoportal.gov.cz/ArcGIS/rest/services/CENIA/cenia_nikm_km/MapServer/export?size=1195%2C390&f=image&bboxSR=102067&dpi=96&bbox=%2D740733%2E1843310654%2C%2D1095561%2E1637409527%2C%2D664243%2E4713516395%2C%2D1070597%2E993814613&format=png8&transparent=true&imageSR=102067 (contamination)
+
 #define __years         "years"
 #define __contamination "contamination"
+*/
 
 PLUGIN_REGISTER(Kompas::Plugins::KontaminaceCeniaCzRasterModel,
                 "cz.mosra.Kompas.Core.AbstractRasterModel/0.1")
@@ -31,10 +43,10 @@ using namespace Kompas::Core;
 
 namespace Kompas { namespace Plugins {
 
-KontaminaceCeniaCzRasterModel::KontaminaceCeniaCzRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 4, 3) {
+KontaminaceCeniaCzRasterModel::KontaminaceCeniaCzRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 8, 5) {
     /* All zoom levels for online maps */
     /** @todo Zoom level 0? */
-    for(Zoom i = 1; i != 12; ++i)
+    for(Zoom i = 3; i != 14; ++i)
         zoomLevelsOnline.insert(i);
 
     /* All layers and overlays for online maps */
@@ -44,22 +56,22 @@ KontaminaceCeniaCzRasterModel::KontaminaceCeniaCzRasterModel(PluginManager::Abst
     layersOnline.push_back(__landsat2);
 
     overlaysOnline.push_back(__labels);
-    overlaysOnline.push_back(__years);
-    overlaysOnline.push_back(__contamination);
+    // overlaysOnline.push_back(__years);
+    // overlaysOnline.push_back(__contamination);
 }
 
 string KontaminaceCeniaCzRasterModel::tileUrl(const std::string& layer, Zoom z, const Core::TileCoords& coords) const {
     ostringstream url;
-    url << "http://kontaminace.cenia.cz/ArcGIS/rest/services/";
+    url << "http://geoportal.gov.cz/ArcGIS/rest/services/CENIA/cenia";
 
     /* URL for given layer */
-    if(layer == __historic)             url << "historicke_1890";
-    else if(layer == __current)         url << "soucasne_1890";
-    else if(layer == __landsat1)        url << "landsat_rgb";
-    else if(layer == __landsat2)        url << "landsat_635";
-    else if(layer == __labels)          url << "popisy";
-    else if(layer == __years)           url << "historicke_roky_1890";
-    else if(layer == __contamination)   url << "sekm_zateze";
+    if(layer == __historic)             url << "_rt_ortofotomapa_historicka";
+    else if(layer == __current)         url << "_rt_ortofotomapa_aktualni";
+    else if(layer == __landsat1)        url << "_landsat_rgb";
+    else if(layer == __landsat2)        url << "_landsat_635";
+    else if(layer == __labels)          url << "_t_popisky";
+    // else if(layer == __years)           url << FIXME;
+    // else if(layer == __contamination)   url << FIXME;
     else return "";
 
     url << "/MapServer/tile/"
