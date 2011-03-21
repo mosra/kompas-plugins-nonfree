@@ -24,7 +24,7 @@
 namespace Kompas { namespace Plugins {
 
 /**
- * @brief Historic satellite maps from http://kontaminace.cenia.cz
+ * @brief Historic aerial maps from http://kontaminace.cenia.cz
  *
  * @todo S-JTSK / Krovak: http://grass.fsv.cvut.cz/wiki/index.php/S-JTSK
  */

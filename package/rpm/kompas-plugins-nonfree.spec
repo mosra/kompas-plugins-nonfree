@@ -1,6 +1,6 @@
 Name: kompas-plugins-nonfree
 URL: http://mosra.cz/blog/kompas.php
-Version: 0.1.1
+Version: 0.1.2
 Release: 1
 License: LGPLv3
 %if %{defined suse_version}
@@ -43,7 +43,7 @@ Non-free plugins headers needed for developing for Kompas.
 # TODO: Split future Qt plugins to package kompas-plugins-nonfree-qt ?
 
 %prep
-%setup -q -n mosra-kompas-plugins-nonfree-c922d69
+%setup -q -n mosra-kompas-plugins-nonfree-fca0b11
 
 %build
 export CFLAGS="$RPM_OPT_FLAGS"
@@ -73,5 +73,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING COPYING.LESSER
 
 %changelog
+* Sun Mar 20 2011 Vladimír Vondruš <mosra@centrum.cz> - 0.1.2-1
+- New upstream version 0.1.2.
+
 * Sat Feb 26 2011 Vladimír Vondruš <mosra@centrum.cz> - 0.1.1-1
 - Initial release.
