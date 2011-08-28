@@ -73,11 +73,11 @@ string GoogleMapsRasterModel::tileUrl(const std::string& layer, Zoom z, const Ko
     ostringstream url;
     url << "http://";
     if(layer == __base)
-        url << "mt" << servernum << ".google.com/vt/lyrs=m@145";
+        url << "mt" << servernum << ".google.com/vt/lyrs=m@159000000";
     else if(layer == __satellite)
-        url << "khm" << servernum << ".google.com/kh/v=79";
+        url << "khm" << servernum << ".google.com/kh/v=90";
     else if(layer == __labels)
-        url << "mt" << servernum << ".google.com/vt/lyrs=h@145";
+        url << "mt" << servernum << ".google.com/vt/lyrs=h@159000000";
     else return "";
 
     url << "&x=" << coords.x << "&y=" << coords.y << "&z=" << z << "&s=" << galileo;
