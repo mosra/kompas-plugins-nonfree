@@ -30,32 +30,32 @@ class GoogleMoonRasterModel: public KompasRasterModel {
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
         GoogleMoonRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
-        inline virtual int features() const {
+        inline int features() const {
             return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;
         }
-        inline virtual const Kompas::Core::AbstractProjection* projection() const
+        inline const Kompas::Core::AbstractProjection* projection() const
             { return &_projection; }
-        inline virtual std::string celestialBody() const
+        inline std::string celestialBody() const
             { return "MoonCelestialBody"; }
-        inline virtual Core::TileSize tileSize() const
+        inline Core::TileSize tileSize() const
             { return Core::TileSize(256,256); }
-        inline virtual std::string copyright() const
+        inline std::string copyright() const
             { return "NASA / USGS / LPI / ASU"; }
 
-        inline virtual std::set<Core::Zoom> zoomLevels() const {
+        inline std::set<Core::Zoom> zoomLevels() const {
             return online() ? zoomLevelsOnline : KompasRasterModel::zoomLevels();
         }
-        inline virtual Core::TileArea area() const {
+        inline Core::TileArea area() const {
             return online() ? areaOnline : KompasRasterModel::area();
         }
-        virtual std::vector<std::string> layers() const {
+        std::vector<std::string> layers() const {
             return online() ? layersOnline : KompasRasterModel::layers();
         }
-        virtual std::vector<std::string> overlays() const {
+        std::vector<std::string> overlays() const {
             return online() ? overlaysOnline : KompasRasterModel::overlays();
         }
 
-        virtual std::string tileUrl(const std::string& layer, Core::Zoom z, const Kompas::Core::TileCoords& coords) const;
+        std::string tileUrl(const std::string& layer, Core::Zoom z, const Kompas::Core::TileCoords& coords) const;
 
     private:
         Plugins::MercatorProjection _projection;

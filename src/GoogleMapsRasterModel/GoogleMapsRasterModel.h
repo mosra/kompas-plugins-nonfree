@@ -30,29 +30,29 @@ class GoogleMapsRasterModel: public KompasRasterModel {
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
         GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
-        inline virtual int features() const {
+        inline int features() const {
             return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;
         }
-        virtual SupportLevel recognizeFile(const std::string& filename, std::istream& file) const;
-        inline virtual const Kompas::Core::AbstractProjection* projection() const
+        SupportLevel recognizeFile(const std::string& filename, std::istream& file) const;
+        inline const Kompas::Core::AbstractProjection* projection() const
             { return &_projection; }
-        inline virtual std::string celestialBody() const
+        inline std::string celestialBody() const
             { return "EarthCelestialBody"; }
-        inline virtual Core::TileSize tileSize() const
+        inline Core::TileSize tileSize() const
             { return Core::TileSize(256,256); }
-        inline virtual std::string copyright() const
+        inline std::string copyright() const
             { return "© 2010 Google, Map Data © 2010 Tele Atlas."; }
 
-        inline virtual std::set<Core::Zoom> zoomLevels() const {
+        inline std::set<Core::Zoom> zoomLevels() const {
             return online() ? zoomLevelsOnline : KompasRasterModel::zoomLevels();
         }
-        inline virtual Core::TileArea area() const {
+        inline Core::TileArea area() const {
             return online() ? areaOnline : KompasRasterModel::area();
         }
-        virtual std::vector<std::string> layers() const {
+        std::vector<std::string> layers() const {
             return online() ? layersOnline : KompasRasterModel::layers();
         }
-        virtual std::vector<std::string> overlays() const {
+        std::vector<std::string> overlays() const {
             return online() ? overlaysOnline : KompasRasterModel::overlays();
         }
 
@@ -60,7 +60,7 @@ class GoogleMapsRasterModel: public KompasRasterModel {
          * Server number and Galielo secure string algorithm stolen from
          * http://www.codeproject.com/KB/scrapbook/googlemap.aspx
          */
-        virtual std::string tileUrl(const std::string& layer, Core::Zoom z, const Kompas::Core::TileCoords& coords) const;
+        std::string tileUrl(const std::string& layer, Core::Zoom z, const Kompas::Core::TileCoords& coords) const;
 
     private:
         Plugins::MercatorProjection _projection;
@@ -69,9 +69,9 @@ class GoogleMapsRasterModel: public KompasRasterModel {
         Core::TileArea areaOnline;
         std::vector<std::string> layersOnline, overlaysOnline;
 
-        virtual Package* parsePackage(const Kompas::Utility::Configuration* conf);
+        Package* parsePackage(const Kompas::Utility::Configuration* conf);
 
-        virtual std::string tileFromArchive(const std::string& path, const std::string& layer, Core::Zoom z, std::vector< KompasRasterArchiveReader*>* archives, unsigned int archiveId, int packageVersion, unsigned int tileId);
+        std::string tileFromArchive(const std::string& path, const std::string& layer, Core::Zoom z, std::vector< KompasRasterArchiveReader*>* archives, unsigned int archiveId, int packageVersion, unsigned int tileId);
 
         std::string name2to3(const std::string& name, int* packageVersion);
         std::string name3to2(const std::string& name, int packageVersion);
