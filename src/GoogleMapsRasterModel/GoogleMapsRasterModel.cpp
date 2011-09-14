@@ -32,6 +32,10 @@ PLUGIN_REGISTER(Kompas::Plugins::GoogleMapsRasterModel,
 
 namespace Kompas { namespace Plugins {
 
+const std::string GoogleMapsRasterModel::baseVersion = "160000000";
+const std::string GoogleMapsRasterModel::satteliteVersion = "92";
+const std::string GoogleMapsRasterModel::labelsVersion = "160000000";
+
 GoogleMapsRasterModel::GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
     /* All zoom levels for online maps */
     for(Zoom i = 0; i != 23; ++i)
@@ -73,11 +77,11 @@ string GoogleMapsRasterModel::tileUrl(const std::string& layer, Zoom z, const Ko
     ostringstream url;
     url << "http://";
     if(layer == __base)
-        url << "mt" << servernum << ".google.com/vt/lyrs=m@159000000";
+        url << "mt" << servernum << ".google.com/vt/lyrs=m@" + baseVersion;
     else if(layer == __satellite)
-        url << "khm" << servernum << ".google.com/kh/v=90";
+        url << "khm" << servernum << ".google.com/kh/v=" + satteliteVersion;
     else if(layer == __labels)
-        url << "mt" << servernum << ".google.com/vt/lyrs=h@159000000";
+        url << "mt" << servernum << ".google.com/vt/lyrs=h@" + labelsVersion;
     else return "";
 
     url << "&x=" << coords.x << "&y=" << coords.y << "&z=" << z << "&s=" << galileo;

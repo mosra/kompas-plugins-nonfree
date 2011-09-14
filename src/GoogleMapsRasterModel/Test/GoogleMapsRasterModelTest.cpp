@@ -15,6 +15,9 @@
 
 #include "GoogleMapsRasterModelTest.h"
 
+#include <QtNetwork/QNetworkAccessManager>
+#include <QtNetwork/QNetworkRequest>
+#include <QtNetwork/QNetworkReply>
 #include <QtTest/QTest>
 
 #include "Utility/Directory.h"
@@ -24,7 +27,8 @@ using namespace std;
 using namespace Kompas::Utility;
 using namespace Kompas::Core;
 
-QTEST_APPLESS_MAIN(Kompas::Plugins::Test::GoogleMapsRasterModelTest)
+/* QEventLoop cannot be used without QApplication, thus not using QTEST_APPLESS_MAIN */
+QTEST_MAIN(Kompas::Plugins::Test::GoogleMapsRasterModelTest)
 
 namespace Kompas { namespace Plugins { namespace Test {
 
@@ -83,6 +87,32 @@ void GoogleMapsRasterModelTest::recognizeFile() {
     istringstream i(file.toStdString());
 
     QVERIFY(model.recognizeFile(filename.toStdString(), i) == state);
+}
+
+void GoogleMapsRasterModelTest::checkCompatibility() {
+    QNetworkAccessManager manager;
+    QNetworkReply* reply = manager.get(QNetworkRequest(QUrl("http://maps.google.com/")));
+
+    QEventLoop eventLoop;
+    connect(reply, SIGNAL(finished()), &eventLoop, SLOT(quit()));
+    eventLoop.exec();
+
+    QString data = QString::fromUtf8(reply->readAll());
+
+    /* Check base layer version string */
+    QRegExp baseRx("http://mt1\\.google\\.com/vt/lyrs=m@(\\d+)");
+    QVERIFY(baseRx.indexIn(data) != -1);
+    QCOMPARE(baseRx.cap(1), QString::fromStdString(GoogleMapsRasterModel::baseVersion));
+
+    /* Check sattelite layer version string */
+    QRegExp satteliteRx("http://khm1\\.google\\.com/kh/v=(\\d+)");
+    QVERIFY(satteliteRx.indexIn(data) != -1);
+    QCOMPARE(satteliteRx.cap(1), QString::fromStdString(GoogleMapsRasterModel::satteliteVersion));
+
+    /* Check labels overlay version string */
+    QRegExp labelsRx("http://mt1\\.google\\.com/vt/lyrs=h@(\\d+)");
+    QVERIFY(labelsRx.indexIn(data) != -1);
+    QCOMPARE(labelsRx.cap(1), QString::fromStdString(GoogleMapsRasterModel::labelsVersion));
 }
 
 }}}

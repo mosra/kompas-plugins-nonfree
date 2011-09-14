@@ -33,6 +33,8 @@ class GoogleMapsRasterModelTest: public QObject {
         void recognizeFile_data();
         void recognizeFile();
 
+        void checkCompatibility();
+
     private:
         GoogleMapsRasterModel model;
 };
