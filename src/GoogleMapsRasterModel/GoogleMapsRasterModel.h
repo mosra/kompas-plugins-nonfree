@@ -32,7 +32,7 @@ class GoogleMapsRasterModel: public KompasRasterModel {
         static const std::string labelsVersion;     /**< @brief Version string of labels overlay */
 
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
-        GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
+        GoogleMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
         inline int features() const {
             return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;
@@ -73,7 +73,7 @@ class GoogleMapsRasterModel: public KompasRasterModel {
         Core::TileArea areaOnline;
         std::vector<std::string> layersOnline, overlaysOnline;
 
-        Package* parsePackage(const Kompas::Utility::Configuration* conf);
+        Package* parsePackage(const Corrade::Utility::Configuration* conf);
 
         std::string tileFromArchive(const std::string& path, const std::string& layer, Core::Zoom z, std::vector< KompasRasterArchiveReader*>* archives, unsigned int archiveId, int packageVersion, unsigned int tileId);
 

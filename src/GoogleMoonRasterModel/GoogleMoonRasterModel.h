@@ -28,7 +28,7 @@ namespace Kompas { namespace Plugins {
 class GoogleMoonRasterModel: public KompasRasterModel {
     public:
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
-        GoogleMoonRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
+        GoogleMoonRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
         inline int features() const {
             return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;

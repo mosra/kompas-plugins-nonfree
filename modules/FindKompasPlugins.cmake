@@ -1,6 +1,6 @@
 # FindKompasPlugins - Kompas plugins handling module for CMake
 #
-# This module depends on Kompas Core and additionaly defines:
+# This module depends on Kompas Core and additionally defines:
 #
 # KOMPASPLUGINS_FOUND       - True if Kompas plugins were found
 #

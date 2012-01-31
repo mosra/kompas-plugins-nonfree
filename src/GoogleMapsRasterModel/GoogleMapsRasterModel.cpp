@@ -20,8 +20,8 @@
 #include "Utility/Directory.h"
 
 using namespace std;
+using namespace Corrade::Utility;
 using namespace Kompas::Core;
-using namespace Kompas::Utility;
 
 #define __base      "base"
 #define __satellite "satellite"
@@ -36,7 +36,7 @@ const std::string GoogleMapsRasterModel::baseVersion = "160000000";
 const std::string GoogleMapsRasterModel::satteliteVersion = "92";
 const std::string GoogleMapsRasterModel::labelsVersion = "160000000";
 
-GoogleMapsRasterModel::GoogleMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
+GoogleMapsRasterModel::GoogleMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
     /* All zoom levels for online maps */
     for(Zoom i = 0; i != 23; ++i)
         zoomLevelsOnline.insert(i);

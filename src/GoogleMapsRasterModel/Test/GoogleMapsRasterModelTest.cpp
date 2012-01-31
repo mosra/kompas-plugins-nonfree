@@ -24,7 +24,7 @@
 #include "testConfigure.h"
 
 using namespace std;
-using namespace Kompas::Utility;
+using namespace Corrade::Utility;
 using namespace Kompas::Core;
 
 /* QEventLoop cannot be used without QApplication, thus not using QTEST_APPLESS_MAIN */

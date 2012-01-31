@@ -21,7 +21,7 @@
 #include "Utility/Directory.h"
 
 using namespace std;
-using namespace Kompas::Utility;
+using namespace Corrade::Utility;
 using namespace Kompas::Core;
 
 #define __base          "base"
@@ -39,7 +39,7 @@ PLUGIN_REGISTER(Kompas::Plugins::MapyCzRasterModel,
 
 namespace Kompas { namespace Plugins {
 
-MapyCzRasterModel::MapyCzRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(1, 1, 6, 6) {
+MapyCzRasterModel::MapyCzRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(1, 1, 6, 6) {
     /* All zoom levels for online maps */
     for(Zoom i = 3; i != 19; ++i)
         zoomLevelsOnline.insert(i);

@@ -21,7 +21,7 @@
 #include "testConfigure.h"
 
 using namespace std;
-using namespace Kompas::Utility;
+using namespace Corrade::Utility;
 using namespace Kompas::Core;
 
 QTEST_APPLESS_MAIN(Kompas::Plugins::Test::MapyCzRasterModelTest)

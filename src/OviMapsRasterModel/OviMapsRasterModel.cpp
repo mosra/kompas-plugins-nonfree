@@ -20,8 +20,8 @@
 #include "Utility/Directory.h"
 
 using namespace std;
+using namespace Corrade::Utility;
 using namespace Kompas::Core;
-using namespace Kompas::Utility;
 
 #define __normal    "normal"
 #define __satellite "satellite"
@@ -32,7 +32,7 @@ PLUGIN_REGISTER(Kompas::Plugins::OviMapsRasterModel,
 
 namespace Kompas { namespace Plugins {
 
-OviMapsRasterModel::OviMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 8, 8) {
+OviMapsRasterModel::OviMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 8, 8) {
     /* All zoom levels for online maps */
     for(Zoom i = 3; i != 19; ++i)
         zoomLevelsOnline.insert(i);

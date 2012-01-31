@@ -28,7 +28,7 @@ namespace Kompas { namespace Plugins {
 class YahooMapsRasterModel: public KompasRasterModel {
     public:
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
-        YahooMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
+        YahooMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
         inline int features() const {
             return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;

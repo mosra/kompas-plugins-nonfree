@@ -28,7 +28,7 @@ namespace Kompas { namespace Plugins {
 class OviMapsRasterModel: public KompasRasterModel {
     public:
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
-        OviMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
+        OviMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
         inline int features() const {
             return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;

@@ -31,7 +31,7 @@ namespace Kompas { namespace Plugins {
 class KontaminaceCeniaCzRasterModel: public KompasRasterModel {
     public:
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
-        KontaminaceCeniaCzRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
+        KontaminaceCeniaCzRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
         inline int features() const {
             return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat;

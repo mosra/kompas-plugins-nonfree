@@ -24,7 +24,7 @@ PLUGIN_REGISTER(Kompas::Plugins::CelestialMap1675RasterModel,
 
 namespace Kompas { namespace Plugins {
 
-CelestialMap1675RasterModel::CelestialMap1675RasterModel(PluginManager::AbstractPluginManager* manager, const string& plugin): KompasRasterModel(manager, plugin), areaOnline(0, 0, 1, 1) {
+CelestialMap1675RasterModel::CelestialMap1675RasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const string& plugin): KompasRasterModel(manager, plugin), areaOnline(0, 0, 1, 1) {
     /*
         width:  1926
         height: 1625

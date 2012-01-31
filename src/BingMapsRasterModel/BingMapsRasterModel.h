@@ -57,7 +57,7 @@ And so on until the destination zoom level is reached.
 class BingMapsRasterModel: public KompasRasterModel {
     public:
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
-        BingMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
+        BingMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
         inline int features() const {
             return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;

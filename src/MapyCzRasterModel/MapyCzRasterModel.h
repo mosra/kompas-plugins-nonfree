@@ -30,7 +30,7 @@ namespace Kompas { namespace Plugins {
 class MapyCzRasterModel: public KompasRasterModel {
     public:
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
-        MapyCzRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
+        MapyCzRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
         inline int features() const {
             return KompasRasterModel::features()|MultipleFileFormat|LoadableFromUrl|NonConvertableFormat;
@@ -63,7 +63,7 @@ class MapyCzRasterModel: public KompasRasterModel {
         Core::TileArea areaOnline;
         std::vector<std::string> layersOnline, overlaysOnline;
 
-        Package* parsePackage(const Utility::Configuration* conf);
+        Package* parsePackage(const Corrade::Utility::Configuration* conf);
 
         std::string tileFromArchive(const std::string& path, const std::string& layer, Core::Zoom z, std::vector<KompasRasterArchiveReader*>* archives, unsigned int archiveId, int packageVsersion, unsigned int tileId);
 

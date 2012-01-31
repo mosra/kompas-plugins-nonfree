@@ -18,8 +18,8 @@
 #include <algorithm>
 
 using namespace std;
+using namespace Corrade::Utility;
 using namespace Kompas::Core;
-using namespace Kompas::Utility;
 
 #define __apollo                "apollo"
 #define __visible               "visible"
@@ -118,7 +118,7 @@ PLUGIN_REGISTER(Kompas::Plugins::GoogleMoonRasterModel,
 
 namespace Kompas { namespace Plugins {
 
-GoogleMoonRasterModel::GoogleMoonRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
+GoogleMoonRasterModel::GoogleMoonRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
     /* All zoom levels for online maps */
     for(Zoom i = 0; i != 20; ++i)
         zoomLevelsOnline.insert(i);

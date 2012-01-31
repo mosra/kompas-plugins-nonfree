@@ -20,8 +20,8 @@
 #include "Utility/Directory.h"
 
 using namespace std;
+using namespace Corrade::Utility;
 using namespace Kompas::Core;
-using namespace Kompas::Utility;
 
 #define __base              "base"
 #define __satellite         "satellite"
@@ -46,7 +46,7 @@ http://ecn.t3.tiles.virtualearth.net/tiles/cmd/ObliqueHybrid?a=03201023300-9766-
 
 */
 
-BingMapsRasterModel::BingMapsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 2, 2) {
+BingMapsRasterModel::BingMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 2, 2) {
     /* All zoom levels for online maps */
     for(Zoom i = 1; i != 21; ++i)
         zoomLevelsOnline.insert(i);

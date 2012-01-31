@@ -32,7 +32,7 @@ namespace Kompas { namespace Plugins {
 class CelestialMap1675RasterModel: public KompasRasterModel {
     public:
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
-        CelestialMap1675RasterModel(PluginManager::AbstractPluginManager* manager, const std::string& plugin);
+        CelestialMap1675RasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
         inline int features() const {
             return KompasRasterModel::features()|LoadableFromUrl|NonConvertableFormat|ConvertableCoords;

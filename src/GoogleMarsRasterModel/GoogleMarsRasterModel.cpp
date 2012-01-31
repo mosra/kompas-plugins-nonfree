@@ -18,8 +18,8 @@
 #include <algorithm>
 
 using namespace std;
+using namespace Corrade::Utility;
 using namespace Kompas::Core;
-using namespace Kompas::Utility;
 
 PLUGIN_REGISTER(Kompas::Plugins::GoogleMarsRasterModel,
                 "cz.mosra.Kompas.Core.AbstractRasterModel/0.2")
@@ -30,7 +30,7 @@ PLUGIN_REGISTER(Kompas::Plugins::GoogleMarsRasterModel,
 
 namespace Kompas { namespace Plugins {
 
-GoogleMarsRasterModel::GoogleMarsRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
+GoogleMarsRasterModel::GoogleMarsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
     /* All zoom levels for online maps */
     for(Zoom i = 0; i != 13; ++i)
         zoomLevelsOnline.insert(i);

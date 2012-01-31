@@ -43,7 +43,7 @@ using namespace Kompas::Core;
 
 namespace Kompas { namespace Plugins {
 
-KontaminaceCeniaCzRasterModel::KontaminaceCeniaCzRasterModel(PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 8, 5) {
+KontaminaceCeniaCzRasterModel::KontaminaceCeniaCzRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 8, 5) {
     /* All zoom levels for online maps */
     /** @todo Zoom level 0? */
     for(Zoom i = 3; i != 14; ++i)
