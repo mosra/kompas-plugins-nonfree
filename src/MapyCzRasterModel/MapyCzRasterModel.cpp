@@ -16,7 +16,6 @@
 #include "MapyCzRasterModel.h"
 
 #include <cstdlib>
-#include <algorithm>
 
 #include "Utility/Directory.h"
 

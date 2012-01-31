@@ -15,8 +15,6 @@
 
 #include "GoogleMoonRasterModel.h"
 
-#include <algorithm>
-
 using namespace std;
 using namespace Corrade::Utility;
 using namespace Kompas::Core;
