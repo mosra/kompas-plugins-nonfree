@@ -29,7 +29,7 @@ using namespace Kompas::Core;
 #define __birdseye          "birdseye"
 #define __birdseyelabels    "birdseyelabels"
 
-PLUGIN_REGISTER(Kompas::Plugins::BingMapsRasterModel,
+PLUGIN_REGISTER(BingMapsRasterModel, Kompas::Plugins::BingMapsRasterModel,
                 "cz.mosra.Kompas.Core.AbstractRasterModel/0.2")
 
 namespace Kompas { namespace Plugins {

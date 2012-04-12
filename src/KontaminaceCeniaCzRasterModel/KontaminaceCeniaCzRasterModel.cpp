@@ -35,7 +35,7 @@ geoportal.gov.cz/ArcGIS/rest/services/CENIA/cenia_nikm_km/MapServer/export?size=
 #define __contamination "contamination"
 */
 
-PLUGIN_REGISTER(Kompas::Plugins::KontaminaceCeniaCzRasterModel,
+PLUGIN_REGISTER(KontaminaceCeniaCzRasterModel, Kompas::Plugins::KontaminaceCeniaCzRasterModel,
                 "cz.mosra.Kompas.Core.AbstractRasterModel/0.2")
 
 using namespace std;

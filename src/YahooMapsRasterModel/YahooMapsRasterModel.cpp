@@ -27,7 +27,7 @@ using namespace Kompas::Core;
 #define __satellite "satellite"
 #define __labels    "labels"
 
-PLUGIN_REGISTER(Kompas::Plugins::YahooMapsRasterModel,
+PLUGIN_REGISTER(YahooMapsRasterModel, Kompas::Plugins::YahooMapsRasterModel,
                 "cz.mosra.Kompas.Core.AbstractRasterModel/0.2")
 
 namespace Kompas { namespace Plugins {

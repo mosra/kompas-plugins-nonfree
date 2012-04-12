@@ -111,7 +111,7 @@ using namespace Kompas::Core;
 #define __geo_hommel            "geo-hommel"
 #define __tpo_hommel            "tpo-hommel"
 
-PLUGIN_REGISTER(Kompas::Plugins::GoogleMoonRasterModel,
+PLUGIN_REGISTER(GoogleMoonRasterModel, Kompas::Plugins::GoogleMoonRasterModel,
                 "cz.mosra.Kompas.Core.AbstractRasterModel/0.2")
 
 namespace Kompas { namespace Plugins {

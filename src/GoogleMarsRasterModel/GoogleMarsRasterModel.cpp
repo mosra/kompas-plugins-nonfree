@@ -19,7 +19,7 @@ using namespace std;
 using namespace Corrade::Utility;
 using namespace Kompas::Core;
 
-PLUGIN_REGISTER(Kompas::Plugins::GoogleMarsRasterModel,
+PLUGIN_REGISTER(GoogleMarsRasterModel, Kompas::Plugins::GoogleMarsRasterModel,
                 "cz.mosra.Kompas.Core.AbstractRasterModel/0.2")
 
 #define __elevation "elevation"

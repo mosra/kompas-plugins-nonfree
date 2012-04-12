@@ -19,7 +19,7 @@
 
 using namespace std;
 
-PLUGIN_REGISTER(Kompas::Plugins::CelestialMap1675RasterModel,
+PLUGIN_REGISTER(CelestialMap1675RasterModel, Kompas::Plugins::CelestialMap1675RasterModel,
                 "cz.mosra.Kompas.Core.AbstractRasterModel/0.2")
 
 namespace Kompas { namespace Plugins {
