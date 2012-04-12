@@ -27,6 +27,8 @@ namespace Kompas { namespace Plugins {
 /** @brief Google Moon */
 class GoogleMoonRasterModel: public KompasRasterModel {
     public:
+        static const std::string server; /**< @brief Server URL */
+
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
         GoogleMoonRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 

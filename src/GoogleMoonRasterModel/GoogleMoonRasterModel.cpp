@@ -116,6 +116,8 @@ PLUGIN_REGISTER(Kompas::Plugins::GoogleMoonRasterModel,
 
 namespace Kompas { namespace Plugins {
 
+const std::string GoogleMoonRasterModel::server = "http://mw1.google.com/mw-planetary/lunar/lunarmaps_v1/";
+
 GoogleMoonRasterModel::GoogleMoonRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
     /* All zoom levels for online maps */
     for(Zoom i = 0; i != 20; ++i)
@@ -220,8 +222,7 @@ GoogleMoonRasterModel::GoogleMoonRasterModel(Corrade::PluginManager::AbstractPlu
 
 string GoogleMoonRasterModel::tileUrl(const std::string& layer, Zoom z, const Kompas::Core::TileCoords& coords) const {
     /* URL for given layer */
-    ostringstream url;
-    url << "http://mw1.google.com/mw-planetary/lunar/lunarmaps_v1/";
+    ostringstream url(server);
 
     string extension;
 

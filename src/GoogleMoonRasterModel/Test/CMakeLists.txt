@@ -1,0 +1,1 @@
+corrade_add_test(GoogleMoonRasterModelTest GoogleMoonRasterModelTest.h GoogleMoonRasterModelTest.cpp ${QT_QTNETWORK_LIBRARY} KompasCore GoogleMoonRasterModelTestLib ${CORRADE_UTILITY_LIBRARY} ${CORRADE_PLUGINMANAGER_LIBRARY})
