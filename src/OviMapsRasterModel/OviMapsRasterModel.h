@@ -27,6 +27,8 @@ namespace Kompas { namespace Plugins {
 /** @brief Ovi Maps */
 class OviMapsRasterModel: public KompasRasterModel {
     public:
+        static const std::string urlPrefix; /**< @brief URL prefix */
+
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
         OviMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 

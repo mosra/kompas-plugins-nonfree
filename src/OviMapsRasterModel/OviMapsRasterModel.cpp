@@ -32,6 +32,8 @@ PLUGIN_REGISTER(Kompas::Plugins::OviMapsRasterModel,
 
 namespace Kompas { namespace Plugins {
 
+const std::string OviMapsRasterModel::urlPrefix = ".maptile.lbs.ovi.com/maptiler/v2/maptile/newest/";
+
 OviMapsRasterModel::OviMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 8, 8) {
     /* All zoom levels for online maps */
     for(Zoom i = 3; i != 19; ++i)
@@ -49,9 +51,8 @@ string OviMapsRasterModel::tileUrl(const std::string& layer, Zoom z, const Core:
 
     /* URL for given layer */
     ostringstream url;
-    url << "http://maptile.mapplayer" << servernum
-        << ".maps.svc.ovi.com/maptiler/maptile/newest/" << layer << ".day/"
-        << z << '/' << coords.x << '/' << coords.y << "/256/png8";
+    url << "http://" << servernum << urlPrefix << layer << ".day/" << z << '/'
+        << coords.x << '/' << coords.y << "/256/png8";
 
     return url.str();
 }

@@ -1,0 +1,1 @@
+corrade_add_test(OviMapsRasterModelTest OviMapsRasterModelTest.h OviMapsRasterModelTest.cpp ${QT_QTNETWORK_LIBRARY} KompasCore OviMapsRasterModelTestLib ${CORRADE_UTILITY_LIBRARY} ${CORRADE_PLUGINMANAGER_LIBRARY})
