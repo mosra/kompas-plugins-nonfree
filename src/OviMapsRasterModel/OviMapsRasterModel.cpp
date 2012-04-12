@@ -15,7 +15,7 @@
 
 #include "OviMapsRasterModel.h"
 
-#include <algorithm>
+#include <cstdlib>
 
 #include "Utility/Directory.h"
 
