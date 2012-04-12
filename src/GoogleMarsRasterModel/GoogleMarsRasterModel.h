@@ -43,6 +43,8 @@ coordinates in all other zoom levels.
 */
 class GoogleMarsRasterModel: public KompasRasterModel {
     public:
+        static const std::string server; /**< @brief Server URL */
+
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
         GoogleMarsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 

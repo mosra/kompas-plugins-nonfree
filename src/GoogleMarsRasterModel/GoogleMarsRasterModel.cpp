@@ -28,6 +28,8 @@ PLUGIN_REGISTER(Kompas::Plugins::GoogleMarsRasterModel,
 
 namespace Kompas { namespace Plugins {
 
+const std::string GoogleMarsRasterModel::server = "http://mw1.google.com/mw-planetary/mars/";
+
 GoogleMarsRasterModel::GoogleMarsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
     /* All zoom levels for online maps */
     for(Zoom i = 0; i != 13; ++i)
@@ -41,7 +43,7 @@ GoogleMarsRasterModel::GoogleMarsRasterModel(Corrade::PluginManager::AbstractPlu
 
 string GoogleMarsRasterModel::tileUrl(const std::string& layer, Zoom z, const Kompas::Core::TileCoords& coords) const {
     ostringstream url;
-    url << "http://mw1.google.com/mw-planetary/mars/" << layer << "/t";
+    url << server << layer << "/t";
 
     /* Tile number */
     TileCoords remaining = coords;
