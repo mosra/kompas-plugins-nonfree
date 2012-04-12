@@ -28,7 +28,7 @@ namespace Kompas { namespace Plugins {
 class GoogleMapsRasterModel: public KompasRasterModel {
     public:
         static const std::string baseVersion;       /**< @brief Version string of base layer */
-        static const std::string satteliteVersion;  /**< @brief Version string of sattelite layer */
+        static const std::string satelliteVersion;  /**< @brief Version string of satellite layer */
         static const std::string labelsVersion;     /**< @brief Version string of labels overlay */
 
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */

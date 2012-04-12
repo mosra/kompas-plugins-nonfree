@@ -33,7 +33,7 @@ PLUGIN_REGISTER(Kompas::Plugins::GoogleMapsRasterModel,
 namespace Kompas { namespace Plugins {
 
 const std::string GoogleMapsRasterModel::baseVersion = "175000000";
-const std::string GoogleMapsRasterModel::satteliteVersion = "108";
+const std::string GoogleMapsRasterModel::satelliteVersion = "108";
 const std::string GoogleMapsRasterModel::labelsVersion = "175000000";
 
 GoogleMapsRasterModel::GoogleMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
@@ -79,7 +79,7 @@ string GoogleMapsRasterModel::tileUrl(const std::string& layer, Zoom z, const Ko
     if(layer == __base)
         url << "mt" << servernum << ".google.com/vt/lyrs=m@" + baseVersion;
     else if(layer == __satellite)
-        url << "khm" << servernum << ".google.com/kh/v=" + satteliteVersion;
+        url << "khm" << servernum << ".google.com/kh/v=" + satelliteVersion;
     else if(layer == __labels)
         url << "mt" << servernum << ".google.com/vt/lyrs=h@" + labelsVersion;
     else return "";

@@ -107,7 +107,7 @@ void GoogleMapsRasterModelTest::checkCompatibility() {
     /* Check sattelite layer version string */
     QRegExp satteliteRx("http://khm1\\.google\\.com/kh/v=(\\d+)");
     QVERIFY(satteliteRx.indexIn(data) != -1);
-    QCOMPARE(satteliteRx.cap(1), QString::fromStdString(GoogleMapsRasterModel::satteliteVersion));
+    QCOMPARE(satteliteRx.cap(1), QString::fromStdString(GoogleMapsRasterModel::satelliteVersion));
 
     /* Check labels overlay version string */
     QRegExp labelsRx("http://mt1\\.google\\.com/vt/lyrs=h@(\\d+)");
