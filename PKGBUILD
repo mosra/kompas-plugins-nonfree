@@ -2,13 +2,12 @@
 pkgname=kompas-plugins-nonfree
 pkgver=dev
 pkgrel=1
-pkgdesc="Non-free plugins for Kompas navigation system"
+pkgdesc="Non-free plugins for Kompas navigation software"
 arch=('i686' 'x86_64')
 url="http://mosra.cz/blog/kompas.php"
 license=('LGPLv3')
-makedepends=('cmake')
+makedepends=('cmake' 'qt')
 depends=('kompas-core')
-optdepends=('kompas-qt: plugins for Qt GUI')
 options=(!strip)
 
 build() {
@@ -20,6 +19,11 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBUILD_TESTS=TRUE
     make
+}
+
+check() {
+    cd "$startdir/build"
+    ctest
 }
 
 package() {
