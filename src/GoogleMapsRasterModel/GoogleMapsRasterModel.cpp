@@ -32,9 +32,9 @@ PLUGIN_REGISTER(Kompas::Plugins::GoogleMapsRasterModel,
 
 namespace Kompas { namespace Plugins {
 
-const std::string GoogleMapsRasterModel::baseVersion = "160000000";
-const std::string GoogleMapsRasterModel::satteliteVersion = "92";
-const std::string GoogleMapsRasterModel::labelsVersion = "160000000";
+const std::string GoogleMapsRasterModel::baseVersion = "175000000";
+const std::string GoogleMapsRasterModel::satteliteVersion = "108";
+const std::string GoogleMapsRasterModel::labelsVersion = "175000000";
 
 GoogleMapsRasterModel::GoogleMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 1, 1) {
     /* All zoom levels for online maps */
