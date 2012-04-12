@@ -46,6 +46,18 @@ http://ecn.t3.tiles.virtualearth.net/tiles/cmd/ObliqueHybrid?a=03201023300-9766-
 
 */
 
+const std::string BingMapsRasterModel::baseSubdomain = "http://ecn.dynamic.t";
+const std::string BingMapsRasterModel::baseServer = ".tiles.virtualearth.net/comp/CompositionHandler/";
+const std::string BingMapsRasterModel::baseData = "?mkt=en-us&it=G,VE,BX,L,LA&shading=hill&n=z";
+
+const std::string BingMapsRasterModel::satelliteSubdomain = "http://ecn.t";
+const std::string BingMapsRasterModel::satelliteServer = ".tiles.virtualearth.net/tiles/a";
+const std::string BingMapsRasterModel::satelliteData = ".jpeg?g=918&mkt=en-us&n=z";
+
+const std::string BingMapsRasterModel::satelliteLabelsSubdomain = "http://ecn.dynamic.t";
+const std::string BingMapsRasterModel::satelliteLabelsServer = ".tiles.virtualearth.net/comp/CompositionHandler/";
+const std::string BingMapsRasterModel::satelliteLabelsData = "?mkt=en-us&it=A,G,L&shading=hill&n=z";
+
 BingMapsRasterModel::BingMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& pluginName): KompasRasterModel(manager, pluginName), areaOnline(0, 0, 2, 2) {
     /* All zoom levels for online maps */
     for(Zoom i = 1; i != 21; ++i)
@@ -72,13 +84,12 @@ string BingMapsRasterModel::tileUrl(const std::string& layer, Zoom z, const Komp
 
     /* URL for given layer */
     ostringstream url;
-    url << "http://ecn.t" << servernum << ".tiles.virtualearth.net/tiles/";
     if(layer == __base)
-        url << 'r' << tilenum.str() << "?g=604&mkt=en-us&lbl=l1&stl=h&shading=hill&n=z";
+        url << baseSubdomain << servernum << baseServer << tilenum.str() << baseData;
     else if(layer == __satellite)
-        url << 'a' << tilenum.str() << ".jpeg?g=604&mkt=en-us&n=z";
+        url << satelliteSubdomain << servernum << satelliteServer << tilenum.str() << satelliteData;
     else if(layer == __satellitelabels)
-        url << 'h' << tilenum.str() << ".jpeg?g=604&mkt=en-us&n=z";
+        url << satelliteLabelsSubdomain << servernum << satelliteLabelsServer << tilenum.str() << satelliteLabelsData;
     else return "";
 
     return url.str();

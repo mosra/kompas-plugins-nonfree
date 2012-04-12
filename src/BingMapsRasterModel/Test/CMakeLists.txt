@@ -1,0 +1,1 @@
+corrade_add_test(BingMapsRasterModelTest BingMapsRasterModelTest.h BingMapsRasterModelTest.cpp ${QT_QTNETWORK_LIBRARY} KompasCore BingMapsRasterModelTestLib ${CORRADE_UTILITY_LIBRARY} ${CORRADE_PLUGINMANAGER_LIBRARY})

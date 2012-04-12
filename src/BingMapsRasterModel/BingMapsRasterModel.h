@@ -56,6 +56,18 @@ And so on until the destination zoom level is reached.
  */
 class BingMapsRasterModel: public KompasRasterModel {
     public:
+        static const std::string baseSubdomain;             /**< @brief Prefix part of satellite URLs */
+        static const std::string baseServer;                /**< @brief Server part of satellite URLs */
+        static const std::string baseData;                  /**< @brief Data part of satellite URLs */
+
+        static const std::string satelliteSubdomain;        /**< @brief Prefix part of satellite URLs */
+        static const std::string satelliteServer;           /**< @brief Server part of satellite URLs */
+        static const std::string satelliteData;             /**< @brief Data part of satellite URLs */
+
+        static const std::string satelliteLabelsSubdomain;  /**< @brief Prefix part of labeled satellite URLs */
+        static const std::string satelliteLabelsServer;     /**< @brief Server part of labeled satellite URLs */
+        static const std::string satelliteLabelsData;       /**< @brief Data part of labeled satellite URLs */
+
         /** @copydoc Plugins::KompasRasterModel::KompasRasterModel */
         BingMapsRasterModel(Corrade::PluginManager::AbstractPluginManager* manager, const std::string& plugin);
 
