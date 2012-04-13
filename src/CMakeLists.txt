@@ -21,7 +21,7 @@ add_subdirectory(GoogleMoonRasterModel)
 add_subdirectory(KontaminaceCeniaCzRasterModel)
 add_subdirectory(MapyCzRasterModel)
 add_subdirectory(OviMapsRasterModel)
-add_subdirectory(YahooMapsRasterModel)
+#add_subdirectory(YahooMapsRasterModel)
 
 if(BUILD_TESTS)
     enable_testing()
